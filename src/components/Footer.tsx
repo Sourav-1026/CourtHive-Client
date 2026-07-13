@@ -6,9 +6,9 @@ import React from "react";
 import { FaFacebookSquare, FaLinkedin, FaPhoneAlt } from "react-icons/fa";
 import { FaSquareInstagram, FaSquareXTwitter, FaRegEnvelope } from "react-icons/fa6";
 
-const linkMap = {
-  Rooms: "/rooms",
-  "Add Room": "/add-room",
+const linkMap: Record<string, string> = {
+  "Courts": "/courts",
+  "Add Court": "/add-court",
   "My Listings": "/my-listings",
   "My Bookings": "/my-bookings",
 };
@@ -18,9 +18,9 @@ const Footer = () => {
   const user = session?.user;
   console.log(user);
 
-  const allLinks = ["Rooms", "Add Room", "My Listings", "My Bookings"];
-  const publicLinks = ["Rooms"];
-  const privateLinks = ["Add Room", "My Listings", "My Bookings"];
+  const allLinks = ["Courts", "Add Court", "My Listings", "My Bookings"];
+  const publicLinks = ["Courts"];
+  // const privateLinks = ["Add Room", "My Listings", "My Bookings"];
 
   const visibleLinks = user ? allLinks : publicLinks;
 
@@ -34,7 +34,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 text-center md:text-left gap-10">
           {/* Brand */}
           <div>
-            <p className="mb-1.5 flex justify-center md:justify-start items-center gap-2 text-xl font-bold tracking-tight text-white text-center md:text-left">StudyNook</p>
+            <p className="mb-1.5 flex justify-center md:justify-start items-center gap-2 text-xl font-bold tracking-tight text-white text-center md:text-left">CourtHive</p>
 
             <p className="mt-3.5 text-sm font-light leading-relaxed text-[rgba(232,237,245,0.55)]">
               A secure, user-friendly library management platform. Add study rooms, book available spaces, and manage your schedule in one organized environment.
@@ -59,7 +59,7 @@ const Footer = () => {
             <p className="mb-5 text-[11px] font-semibold uppercase tracking-[2px] text-[rgba(232,237,245,0.35)]">Contact</p>
             <div className="flex flex-col  gap-3.5">
               {[
-                { Icon: FaRegEnvelope, label: "studynook@gmail.com" },
+                { Icon: FaRegEnvelope, label: "courthive@gmail.com" },
                 { Icon: FaPhoneAlt, label: "01954 844 656" },
               ].map(({ Icon, label }) => (
                 <div key={label} className="flex items-center justify-center md:justify-start gap-2.5 text-sm text-[rgba(232,237,245,0.65)]">

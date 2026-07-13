@@ -3,18 +3,18 @@ import { Button } from "@heroui/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-const amenitiesList = ["Whiteboard", "Projector", "Wi-Fi", "Power Outlets", "Quiet Zone", "Air Conditioning"];
+const amenitiesList: string[] = ["Whiteboard", "Projector", "Wi-Fi", "Power Outlets", "Quiet Zone", "Air Conditioning"];
 
 export default function Searchbar() {
   const router = useRouter();
-  const [search, setSearch] = useState("");
-  const [selectedAmenities, setSelectedAmenities] = useState([]);
-  const [minRate, setMinRate] = useState("");
-  const [maxRate, setMaxRate] = useState("");
+  const [search, setSearch] = useState<string>("");
+  const [selectedAmenities, setSelectedAmenities] = useState<string[]>([]);
+  const [minRate, setMinRate] = useState<string>("");
+  const [maxRate, setMaxRate] = useState<string>("");
 
   console.log(search, selectedAmenities, minRate, maxRate);
 
-  const handleAmenityChange = (amenity) => {
+  const handleAmenityChange = (amenity: string) => {
     setSelectedAmenities((prev) => (prev.includes(amenity) ? prev.filter((a) => a !== amenity) : [...prev, amenity]));
   };
 
@@ -25,7 +25,7 @@ export default function Searchbar() {
     if (minRate) params.set("minRate", minRate);
     if (maxRate) params.set("maxRate", maxRate);
 
-    router.push(`/rooms?${params.toString()}`);
+    router.push(`/courts?${params.toString()}`);
   };
 
   const handleReset = () => {
@@ -33,7 +33,7 @@ export default function Searchbar() {
     setSelectedAmenities([]);
     setMinRate("");
     setMaxRate("");
-    router.push("/rooms");
+    router.push("/courts");
   };
 
   return (
@@ -57,7 +57,7 @@ export default function Searchbar() {
 
         {/* Search */}
         <div className="mb-6">
-          <label className="block text-slate-400 text-xs mb-2">Search by room name</label>
+          <label className="block text-slate-400 text-xs mb-2">Search by court name</label>
           <div className="relative flex flex-col gap-2">
             <svg
               className="absolute left-3 top-5 -translate-y-1/2 text-slate-500 w-4 h-4 pointer-events-none"
@@ -74,9 +74,9 @@ export default function Searchbar() {
             </svg>
             <input
               type="text"
-              placeholder="e.g. Digital Learning Room"
+              placeholder="e.g. Golf Cout"
               value={search}
-              onChange={(e) => setSearch(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearch(e.target.value)}
               className="w-full bg-[#162d4a] border border-[#1e3a5f] rounded-xl pl-9 pr-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors"
             />
             <Button onClick={handleSearch} className={"rounded-md bg-amber-500 hover:bg-amber-400 text-[#0d1f3c]"}>
@@ -124,14 +124,14 @@ export default function Searchbar() {
               type="number"
               placeholder="Min"
               value={minRate}
-              onChange={(e) => setMinRate(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setMinRate(e.target.value)}
               className="flex-1 w-1/2 bg-[#162d4a] border border-[#1e3a5f] rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
             />
             <input
               type="number"
               placeholder="Max"
               value={maxRate}
-              onChange={(e) => setMaxRate(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setMaxRate(e.target.value)}
               className="flex-1 w-1/2 bg-[#162d4a] border border-[#1e3a5f] rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
             />
           </div>

@@ -7,7 +7,15 @@ import { LiaMinusSolid } from "react-icons/lia";
 import { useRouter } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
 
-const CancelModal = ({ b }) => {
+type CancelModalProps = {
+  b: {
+    _id: string;
+    courtName: string;
+    courtStatus: string;
+  }
+}
+
+const CancelModal = ({ b }: CancelModalProps) => {
   const router = useRouter();
 
   const handleCancel = async () => {
@@ -20,20 +28,20 @@ const CancelModal = ({ b }) => {
         "content-type": "application/json",
         authorization: `Bearer ${tokenData?.token}`,
       },
-      body: JSON.stringify({ roomStatus: "Cancelled" }),
+      body: JSON.stringify({ courtStatus: "Cancelled" }),
     });
 
     const data = await res.json();
     console.log(data);
     if (data) {
-      toast.warning("You Room Booking is successfully cancelled");
+      toast.warning("You Court Booking is successfully cancelled");
       router.refresh();
     }
   };
 
   return (
     <AlertDialog>
-      {b.roomStatus === "Cancelled" ? (
+      {b.courtStatus === "Cancelled" ? (
         <LiaMinusSolid size={22} className="text-yellow-400" />
       ) : (
         <Button className="bg-transparent rounded-xl text-red-400 text-xs tracking-widest uppercase px-4 py-2 border border-red-400 hover:bg-red-400/10 transition-colors">Cancel</Button>
@@ -55,7 +63,7 @@ const CancelModal = ({ b }) => {
 
             <AlertDialog.Body className="px-6 py-4">
               <p className="text-slate-400 text-sm leading-relaxed">
-                This will permanently cancel the booking of <span className="text-white font-medium">{b.roomName}</span>. This action cannot be undone.
+                This will permanently cancel the booking of <span className="text-white font-medium">{b.courtName}</span>. This action cannot be undone.
               </p>
             </AlertDialog.Body>
 

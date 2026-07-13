@@ -7,7 +7,19 @@ import React from "react";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { motion } from "framer-motion";
 
-const CourtCard = ({ r }) => {
+type CourtCardProps = {
+  r: {
+    _id: string;
+    courtName: string;
+    imageUrl: string;
+    description: string;
+    rate: string;
+    capacity: string;
+    amenities: string[];
+  }
+}
+
+const CourtCard = ({ r }: CourtCardProps) => {
   return (
     <motion.div
       className="rounded-xl overflow-hidden flex flex-col border border-white/10 shadow-xl"
@@ -18,18 +30,18 @@ const CourtCard = ({ r }) => {
     >
       {/* Image with overlay gradient */}
       <div className="relative">
-        <Image src={r.imageUrl} alt={r.roomName} width={400} height={400} className="w-full h-52 object-cover" />
+        <Image src={r.imageUrl} alt={r.courtName} width={400} height={400} className="w-full h-52 object-cover" />
         <div className="absolute inset-0 bg-linear-to-t from-[#0d1f3c] to-transparent" />
         {/* Floor & Capacity badges overlaid on image */}
         <div className="absolute bottom-3 left-3 flex gap-2">
-          <span className="bg-white/10 backdrop-blur-sm text-white text-xs font-medium px-2.5 py-1 rounded-full border border-white/20">Floor {r.floor}</span>
+          {/* <span className="bg-white/10 backdrop-blur-sm text-white text-xs font-medium px-2.5 py-1 rounded-full border border-white/20">Floor {r.floor}</span> */}
           <span className="bg-white/10 backdrop-blur-sm text-white text-xs font-medium px-2.5 py-1 rounded-full border border-white/20">{r.capacity} people</span>
         </div>
       </div>
 
       {/* Content */}
       <div className="p-5 space-y-3 flex-1 flex flex-col">
-        <h3 className="text-white text-lg font-bold tracking-tight">{r.roomName}</h3>
+        <h3 className="text-white text-lg font-bold tracking-tight">{r.courtName}</h3>
         <p className="text-white/50 text-sm leading-relaxed line-clamp-2">{r.description}</p>
 
         {/* Rate */}
@@ -48,7 +60,7 @@ const CourtCard = ({ r }) => {
         </div>
 
         {/* Button */}
-        <Link href={`/rooms/${r._id}`} className="mt-4 block">
+        <Link href={`/courts/${r._id}`} className="mt-4 block">
           <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
             <Button className="w-full rounded-lg bg-amber-400 text-[#0d1f3c] font-semibold hover:bg-amber-300 transition-colors flex items-center justify-center gap-2">
               View Details

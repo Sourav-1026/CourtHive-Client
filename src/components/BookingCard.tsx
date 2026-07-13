@@ -13,16 +13,28 @@ const TIME_SLOTS = Array.from({ length: 13 }, (_, i) => {
   return { value: String(hour), label: `${String(hour).padStart(2, "0")}:00` };
 });
 
-const BookingCard = ({ room }) => {
+type BookingCardProps = {
+  court: {
+    _id: string;
+    courtName: string;
+    capacity: string;
+    rate: string;
+    description: string;
+    imageUrl: string;
+    amenities: string[];
+  }
+}
+
+const BookingCard = ({ court }: BookingCardProps) => {
   const { data: session } = authClient.useSession();
   const user = session?.user;
   // console.log(user);
 
-  const { _id, roomName, floor, capacity, rate, imageUrl, amenities } = room;
+  const { _id, courtName, capacity, rate, imageUrl, amenities } = court;
 
-  const [date, setDate] = useState(null);
-  const [startHour, setStartHour] = useState(null);
-  const [endHour, setEndHour] = useState(null);
+  const [date, setDate] = useState<string | null>(null);
+  const [startHour, setStartHour] = useState<string | null>(null);
+  const [endHour, setEndHour] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
   //   console.log(new Date(date));
@@ -30,7 +42,7 @@ const BookingCard = ({ room }) => {
 
   const totalCost = useMemo(() => {
     if (!startHour || !endHour) return null;
-    return (Number(endHour) - Number(startHour)) * rate;
+    return (Number(endHour) - Number(startHour)) * Number(rate);
   }, [startHour, endHour, rate]);
 
   const handleBooking = async () => {
@@ -42,17 +54,16 @@ const BookingCard = ({ room }) => {
         userEmail: user?.email,
         userImage: user?.image,
         userName: user?.name,
-        roomId: _id,
-        roomName,
+        courtId: _id,
+        courtName,
         price: totalCost,
-        roomImage: imageUrl,
-        roomCapacity: capacity,
-        roomFloor: floor,
-        roomAmenities: amenities,
-        bookingDate: new Date(date),
+        courtImage: imageUrl,
+        courtCapacity: capacity,
+        courtAmenities: amenities,
+        bookingDate: new Date(),
         bookingStartHour: startHour,
         bookingEndHour: endHour,
-        roomStatus: "Confirmed",
+        courtStatus: "Confirmed",
       };
 
       const { data: tokenData } = await authClient.token();
@@ -73,7 +84,7 @@ const BookingCard = ({ room }) => {
         return;
       }
 
-      toast.success("Room booked successfully!");
+      toast.success("Court booked successfully!");
     } catch (err) {
       console.error(err);
       toast.error("Something went wrong. Please try again.");
@@ -169,8 +180,7 @@ const BookingCard = ({ room }) => {
         {/* Details */}
         <div className="space-y-4 mb-8">
           {[
-            { key: "Room", val: roomName },
-            { key: "Floor", val: floor },
+            { key: "Court", val: courtName },
             { key: "Capacity", val: `${capacity} People` },
           ].map(({ key, val }) => (
             <div key={key} className="flex justify-between items-center">
@@ -186,7 +196,7 @@ const BookingCard = ({ room }) => {
 
         <Button
           onClick={handleBooking}
-          disabled={isLoading}
+          isDisabled={isLoading}
           className="font-body block w-full  text-center text-[0.7rem] tracking-[0.28em] uppercase font-medium bg-[#d4a853] text-[#1a1714] hover:bg-[#f7f4ef] hover:tracking-[0.35em] transition-all duration-300"
         >
           Book Now
@@ -194,8 +204,8 @@ const BookingCard = ({ room }) => {
 
         {/* Edit & Delete Buttons */}
         <div className="flex gap-3 mt-4">
-          <EditModal room={room} />
-          <DeleteModal room={room} />
+          <EditModal court={court} />
+          <DeleteModal court={court} />
         </div>
       </div>
     </div>

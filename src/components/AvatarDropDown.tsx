@@ -2,13 +2,23 @@ import React, { useState } from "react";
 import { Avatar } from "@heroui/react";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
-import { authClient } from "@/lib/auth-client";
+// import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
 import { FiLogOut } from "react-icons/fi";
 
-const AvatarDropDown = ({ user }) => {
+interface User {
+  name: string;
+  email: string;
+  image?: string | null;
+}
+
+interface AvatarDropDownProps {
+  user: User;
+}
+
+const AvatarDropDown = ({ user }: AvatarDropDownProps) => {
   const router = useRouter();
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState<boolean>(false);
   if (!user) return null;
   // const {name, image, email} = user;
   const handleLogOut = async () => {
@@ -26,7 +36,7 @@ const AvatarDropDown = ({ user }) => {
     <div className="relative">
       <button onClick={() => setOpen(!open)} className="focus:outline-none">
         <Avatar className="cursor-pointer ring-2 ring-amber-500/40 hover:ring-amber-500 transition-all rounded-full">
-          <Avatar.Image alt={user?.name} src={user?.image} />
+          <Avatar.Image alt={user?.name} src={user?.image ?? undefined} />
           <Avatar.Fallback
             delayMs={600}
             className="bg-[#162d4a] text-white font-medium"
@@ -52,11 +62,11 @@ const AvatarDropDown = ({ user }) => {
             {/* Links */}
             <div className="py-1">
               <Link
-                href="/add-room"
+                href="/add-court"
                 onClick={() => setOpen(false)}
                 className="block px-4 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-white/5 transition-colors"
               >
-                Add Room
+                Add Court
               </Link>
               <Link
                 href="/my-listings"

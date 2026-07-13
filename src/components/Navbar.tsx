@@ -4,11 +4,11 @@ import React, { useState } from "react";
 import { Button } from "@heroui/react";
 import Link from "next/link";
 import { authClient } from "@/lib/auth-client";
-import AvatarDropdown from "./AvatarDropdown";
 import { RiMenu3Line, RiCloseLine } from "react-icons/ri";
 import { MdLogin } from "react-icons/md";
 import { BiLogIn } from "react-icons/bi";
 import { usePathname } from "next/navigation";
+import AvatarDropDown from "./AvatarDropDown";
 
 interface NavLink {
   href: string;
@@ -23,10 +23,10 @@ const Navbar = () => {
 
   const navLinks: NavLink[] = [
     { href: "/", label: "Home" },
-    { href: "/rooms", label: "Rooms" },
+    { href: "/courts", label: "Courts" },
     ...(user
       ? [
-          { href: "/add-room", label: "Add Room" },
+          { href: "/add-court", label: "Add Court" },
           { href: "/my-listings", label: "My Listings" },
           { href: "/my-bookings", label: "My Bookings" },
         ]
@@ -40,7 +40,7 @@ const Navbar = () => {
       <header className="flex h-16 items-center justify-between px-6">
         {/* Logo */}
         <div className="flex items-center gap-3">
-          <p className="font-bold text-lg">StudyNook</p>
+          <p className="font-bold text-lg">CourtHive</p>
         </div>
 
         {/* Desktop links */}
@@ -57,7 +57,7 @@ const Navbar = () => {
         {/* Desktop auth */}
         <div className="hidden md:flex items-center gap-1.5">
           {user ? (
-            <AvatarDropdown user={user} />
+            <AvatarDropDown user={user} />
           ) : (
             <>
               <Link href="/login">
@@ -78,7 +78,7 @@ const Navbar = () => {
 
         {/* Mobile right side */}
         <div className="flex md:hidden items-center gap-3">
-          {user && <AvatarDropdown user={user} />}
+          {user && <AvatarDropDown user={user} />}
           <button onClick={() => setMenuOpen((prev) => !prev)} className="text-[#0d1f3c] text-2xl focus:outline-none" aria-label="Toggle menu">
             {menuOpen ? <RiCloseLine /> : <RiMenu3Line />}
           </button>

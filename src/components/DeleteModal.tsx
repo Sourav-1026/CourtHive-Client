@@ -6,14 +6,21 @@ import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
 
-const DeleteModal = ({ room }) => {
+type DeleteModalProps = {
+  court: {
+    _id: string;
+    courtName: string;
+  }
+}
+
+const DeleteModal = ({ court }: DeleteModalProps) => {
   const router = useRouter();
-  const { _id, roomName } = room;
+  const { _id, courtName } = court;
 
   const handleDelete = async () => {
     const { data: tokenData } = await authClient.token();
     console.log(tokenData);
-    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/rooms/${_id}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/courts/${_id}`, {
       method: "DELETE",
       headers: {
         "content-type": "application/json",
@@ -25,8 +32,8 @@ const DeleteModal = ({ room }) => {
     console.log(data);
 
     if (data) {
-      toast.warning("Room deleted successfully");
-      router.push("/rooms");
+      toast.warning("Court deleted successfully");
+      router.push("/courts");
     }
   };
 
@@ -43,13 +50,13 @@ const DeleteModal = ({ room }) => {
                 <div className="w-10 h-10 rounded-xl bg-red-500/10 border border-red-500/20 flex items-center justify-center text-red-400">
                   <AlertDialog.Icon status="danger" />
                 </div>
-                <AlertDialog.Heading className="text-lg font-semibold text-white">Delete Room?</AlertDialog.Heading>
+                <AlertDialog.Heading className="text-lg font-semibold text-white">Delete Court?</AlertDialog.Heading>
               </div>
             </AlertDialog.Header>
 
             <AlertDialog.Body className="px-6 py-4">
               <p className="text-slate-400 text-sm leading-relaxed">
-                This will permanently delete <span className="text-white font-medium">{roomName}</span> and all of its data. This action cannot be undone.
+                This will permanently delete <span className="text-white font-medium">{courtName}</span> and all of its data. This action cannot be undone.
               </p>
             </AlertDialog.Body>
 
@@ -58,7 +65,7 @@ const DeleteModal = ({ room }) => {
                 Cancel
               </Button>
               <Button onClick={handleDelete} slot="close" className="flex-1 bg-red-500 hover:bg-red-400 text-white text-sm font-semibold py-2.5 rounded-xl transition-colors">
-                Delete Room
+                Delete Court
               </Button>
             </AlertDialog.Footer>
           </AlertDialog.Dialog>
