@@ -8,12 +8,16 @@ import { useRouter } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
 
 const amenitiesList = [
-  { id: "whiteboard", label: "Whiteboard" },
-  { id: "projector", label: "Projector" },
-  { id: "wifi", label: "Wi-Fi" },
-  { id: "power-outlets", label: "Power Outlets" },
-  { id: "quiet-zone", label: "Quiet Zone" },
-  { id: "air-conditioning", label: "Air Conditioning" },
+  { id: "floodlights", label: "Floodlights" },
+  { id: "changing-room", label: "Changing Room" },
+  { id: "washroom", label: "Washroom" },
+  { id: "parking", label: "Parking" },
+  { id: "drinking-water", label: "Drinking Water" },
+  { id: "first-aid", label: "First Aid" },
+  { id: "seating-area", label: "Seating Area" },
+  { id: "equipment-rental", label: "Equipment Rental" },
+  { id: "artificial-turf", label: "Artificial Turf" },
+  { id: "indoor", label: "Indoor" },
 ];
 
 type EditModalProps = {
@@ -21,8 +25,8 @@ type EditModalProps = {
     _id: string;
     courtName: string;
     description: string;
-    capacity: string;
-    rate: string;
+    capacity: number;
+    rate: number;
     imageUrl: string;
   }
 }
@@ -129,7 +133,7 @@ const EditModal = ({ court }: EditModalProps) => {
                       <FieldError className="text-red-400 text-xs mt-1" />
                     </TextField> */}
 
-                    <TextField name="rate" type="number" isRequired defaultValue={rate}>
+                    <TextField name="rate" type="number" isRequired defaultValue={String(rate)}>
                       <Label className="text-slate-400 text-xs tracking-widest uppercase mb-1.5 block">Hourly Rate (USD)</Label>
                       <Input
                         placeholder="e.g. 25"
@@ -139,7 +143,7 @@ const EditModal = ({ court }: EditModalProps) => {
                     </TextField>
 
                     <div className="sm:col-span-2">
-                      <TextField name="capacity" type="number" isRequired defaultValue={capacity}>
+                      <TextField name="capacity" type="number" isRequired defaultValue={String(capacity)}>
                         <Label className="text-slate-400 text-xs tracking-widest uppercase mb-1.5 block">Capacity (people)</Label>
                         <Input
                           placeholder="e.g. 10"

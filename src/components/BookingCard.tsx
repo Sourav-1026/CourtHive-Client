@@ -17,8 +17,8 @@ type BookingCardProps = {
   court: {
     _id: string;
     courtName: string;
-    capacity: string;
-    rate: string;
+    capacity: number;
+    rate: number;
     description: string;
     imageUrl: string;
     amenities: string[];

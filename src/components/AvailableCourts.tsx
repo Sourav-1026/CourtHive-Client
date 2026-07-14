@@ -7,8 +7,8 @@ interface Court {
   courtName: string;
     imageUrl: string;
     description: string;
-    rate: string;
-    capacity: string;
+    rate: number;
+    capacity: number;
     amenities: string[];
 }
 

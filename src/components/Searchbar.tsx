@@ -3,7 +3,8 @@ import { Button } from "@heroui/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-const amenitiesList: string[] = ["Whiteboard", "Projector", "Wi-Fi", "Power Outlets", "Quiet Zone", "Air Conditioning"];
+const amenitiesList: string[] = ["Floodlights", "Changing Room", "Washroom", "Parking", "Drinking Water", "First Aid", "Seating Area", "Equipment Rental", "Artificial Turf", "Indoor"];
+
 
 export default function Searchbar() {
   const router = useRouter();
