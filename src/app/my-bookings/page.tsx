@@ -36,61 +36,107 @@ const MyBookingsPage = async () => {
     headers: await headers(),
   });
 
-  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/bookings/${user?.id}`, {
-    headers: {
-      authorization: `Bearer ${token}`,
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_SERVER_URL}/bookings/${user?.id}`,
+    {
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
     },
-  });
+  );
   const bookings: Booking[] = await res.json();
 
   return (
     <div className="container mx-auto my-10 px-4">
       <h1 className="text-4xl font-bold text-center">My Bookings</h1>
-      <p className="text-sm text-gray-500 mt-3 text-center">Manage your upcoming and past court reservations.</p>
+      <p className="text-sm text-gray-500 mt-3 text-center">
+        Manage your upcoming and past court reservations.
+      </p>
 
       {bookings.length === 0 ? (
         <div className="container mx-auto mt-6 flex flex-col justify-center items-center py-20 gap-4">
-          <div className="bg-[#0d1f3c] p-6 rounded-full">
+          <div className="bg-[#0a2e2e] p-6 rounded-full">
             <BsCalendarX className="text-amber-400 text-5xl" />
           </div>
           <h2 className="text-2xl font-bold text-[#0d1f3c]">No Bookings Yet</h2>
-          <p className="text-gray-500 text-sm">You haven't made any court bookings. Start by exploring available courts.</p>
+          <p className="text-gray-500 text-sm">
+            You haven't made any court bookings. Start by exploring available
+            courts.
+          </p>
           <Link href="/courts">
-            <Button className="bg-[#0d1f3c] text-white hover:bg-amber-400 hover:text-[#0d1f3c] font-semibold px-6 rounded-lg transition-colors">Browse Courts</Button>
+            <Button className="bg-[#0d1f3c] text-white hover:bg-amber-400 hover:text-[#0d1f3c] font-semibold px-6 rounded-lg transition-colors">
+              Browse Courts
+            </Button>
           </Link>
         </div>
       ) : (
         <>
           {/* Desktop table - lg and above */}
           <div className="hidden lg:block mt-6">
-            <table className="w-[80%] border border-gray-200 mx-auto bg-[#0d1f3c] rounded-xl overflow-hidden">
+            <table className="w-[80%] border border-gray-200 mx-auto bg-[#0a2e2e] rounded-xl overflow-hidden">
               <thead>
                 <tr className="border-b border-white/10">
-                  <th className="text-left text-[0.65rem] tracking-[0.2em] uppercase text-[#a09880] px-4 py-3">Court</th>
-                  <th className="text-left text-[0.65rem] tracking-[0.2em] uppercase text-[#a09880] px-4 py-3">Date</th>
-                  <th className="text-left text-[0.65rem] tracking-[0.2em] uppercase text-[#a09880] px-4 py-3">Time</th>
-                  <th className="text-left text-[0.65rem] tracking-[0.2em] uppercase text-[#a09880] px-4 py-3">Cost</th>
-                  <th className="text-left text-[0.65rem] tracking-[0.2em] uppercase text-[#a09880] px-4 py-3">Status</th>
-                  <th className="text-left text-[0.65rem] tracking-[0.2em] uppercase text-[#a09880] px-4 py-3">Action</th>
+                  <th className="text-left text-[0.65rem] tracking-[0.2em] uppercase text-[#a09880] px-4 py-3">
+                    Court
+                  </th>
+                  <th className="text-left text-[0.65rem] tracking-[0.2em] uppercase text-[#a09880] px-4 py-3">
+                    Date
+                  </th>
+                  <th className="text-left text-[0.65rem] tracking-[0.2em] uppercase text-[#a09880] px-4 py-3">
+                    Time
+                  </th>
+                  <th className="text-left text-[0.65rem] tracking-[0.2em] uppercase text-[#a09880] px-4 py-3">
+                    Cost
+                  </th>
+                  <th className="text-left text-[0.65rem] tracking-[0.2em] uppercase text-[#a09880] px-4 py-3">
+                    Status
+                  </th>
+                  <th className="text-left text-[0.65rem] tracking-[0.2em] uppercase text-[#a09880] px-4 py-3">
+                    Action
+                  </th>
                 </tr>
               </thead>
               <tbody>
                 {bookings.map((b) => (
-                  <tr key={b._id} className="border-b border-white/10 hover:bg-white/5 transition-colors">
+                  <tr
+                    key={b._id}
+                    className="border-b border-white/10 hover:bg-white/5 transition-colors"
+                  >
                     <td className="px-4 py-4">
                       <div className="flex items-center gap-3">
-                        <Image src={b.courtImage} alt={b.courtName} width={60} height={60} className="object-cover rounded" />
-                        <span className="font-medium text-sm text-white">{b.courtName}</span>
+                        <Image
+                          src={b.courtImage}
+                          alt={b.courtName}
+                          width={60}
+                          height={60}
+                          className="object-cover rounded"
+                        />
+                        <span className="font-medium text-sm text-white">
+                          {b.courtName}
+                        </span>
                       </div>
                     </td>
-                    <td className="px-4 py-4 text-sm text-slate-300">{new Date(b.bookingDate).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}</td>
                     <td className="px-4 py-4 text-sm text-slate-300">
-                      {String(b.bookingStartHour).padStart(2, "0")}:00 – {String(b.bookingEndHour).padStart(2, "0")}:00
+                      {new Date(b.bookingDate).toLocaleDateString("en-US", {
+                        month: "long",
+                        day: "numeric",
+                        year: "numeric",
+                      })}
                     </td>
-                    <td className="px-4 py-4 text-sm font-medium text-white">${b.price}</td>
-                    <td className={`px-4 py-4 text-sm ${b.courtStatus == "Cancelled" ? "text-red-500" : "text-green-600"}`}>{b.courtStatus}</td>
+                    <td className="px-4 py-4 text-sm text-slate-300">
+                      {String(b.bookingStartHour).padStart(2, "0")}:00 –{" "}
+                      {String(b.bookingEndHour).padStart(2, "0")}:00
+                    </td>
+                    <td className="px-4 py-4 text-sm font-medium text-white">
+                      ${b.price}
+                    </td>
+                    <td
+                      className={`px-4 py-4 text-sm ${b.courtStatus == "Cancelled" ? "text-red-500" : "text-green-600"}`}
+                    >
+                      {b.courtStatus}
+                    </td>
                     <td className="px-4 py-4">
-                      <CancelModal b={b}  />
+                      <CancelModal b={b} />
                     </td>
                   </tr>
                 ))}
@@ -101,38 +147,64 @@ const MyBookingsPage = async () => {
           {/* Card layout - sm and md */}
           <div className="lg:hidden mt-6 flex flex-col gap-4">
             {bookings.map((b) => (
-              <div key={b._id} className="bg-[#0d1f3c] rounded-xl p-4 border border-white/10">
+              <div
+                key={b._id}
+                className="bg-[#0d1f3c] rounded-xl p-4 border border-white/10"
+              >
                 {/* Court info */}
                 <div className="flex items-center gap-3 mb-4">
-                  <Image src={b.courtImage} alt={b.courtName} width={60} height={60} className="object-cover rounded" />
-                  <span className="font-semibold text-white text-base">{b.courtName}</span>
+                  <Image
+                    src={b.courtImage}
+                    alt={b.courtName}
+                    width={60}
+                    height={60}
+                    className="object-cover rounded"
+                  />
+                  <span className="font-semibold text-white text-base">
+                    {b.courtName}
+                  </span>
                 </div>
 
                 {/* Details grid */}
                 <div className="grid grid-cols-2 gap-y-3 gap-x-4 text-sm mb-4">
                   <div>
-                    <p className="text-[0.65rem] tracking-widest uppercase text-[#a09880] mb-0.5">Date</p>
-                    <p className="text-slate-300">{new Date(b.bookingDate).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}</p>
-                  </div>
-                  <div>
-                    <p className="text-[0.65rem] tracking-widest uppercase text-[#a09880] mb-0.5">Time</p>
+                    <p className="text-[0.65rem] tracking-widest uppercase text-[#a09880] mb-0.5">
+                      Date
+                    </p>
                     <p className="text-slate-300">
-                      {String(b.bookingStartHour).padStart(2, "0")}:00 – {String(b.bookingEndHour).padStart(2, "0")}:00
+                      {new Date(b.bookingDate).toLocaleDateString("en-US", {
+                        month: "long",
+                        day: "numeric",
+                        year: "numeric",
+                      })}
                     </p>
                   </div>
                   <div>
-                    <p className="text-[0.65rem] tracking-widest uppercase text-[#a09880] mb-0.5">Cost</p>
+                    <p className="text-[0.65rem] tracking-widest uppercase text-[#a09880] mb-0.5">
+                      Time
+                    </p>
+                    <p className="text-slate-300">
+                      {String(b.bookingStartHour).padStart(2, "0")}:00 –{" "}
+                      {String(b.bookingEndHour).padStart(2, "0")}:00
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-[0.65rem] tracking-widest uppercase text-[#a09880] mb-0.5">
+                      Cost
+                    </p>
                     <p className="text-white font-medium">${b.price}</p>
                   </div>
                   <div>
-                    <p className="text-[0.65rem] tracking-widest uppercase text-[#a09880] mb-0.5">Status</p>
+                    <p className="text-[0.65rem] tracking-widest uppercase text-[#a09880] mb-0.5">
+                      Status
+                    </p>
                     <p className="text-slate-300">{b.courtStatus}</p>
                   </div>
                 </div>
 
                 {/* Action */}
                 <div className="border-t border-white/10 pt-3">
-                  <CancelModal b={b}  />
+                  <CancelModal b={b} />
                 </div>
               </div>
             ))}

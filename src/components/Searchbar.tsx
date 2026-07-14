@@ -61,7 +61,7 @@ export default function Searchbar() {
           <div className="flex items-center gap-3">
             <button
               onClick={handleReset}
-              className="text-slate-400 hover:text-white transition-colors bg-transparent border-none cursor-pointer"
+              className="text-amber-400 hover:text-amber-300 transition-colors bg-transparent border-none cursor-pointer"
               aria-label="Close"
             >
               <svg
@@ -81,7 +81,7 @@ export default function Searchbar() {
             </button>
             <button
               onClick={handleReset}
-              className="text-slate-400 hover:text-white text-sm transition-colors bg-transparent border-none cursor-pointer"
+              className="text-amber-400 hover:text-amber-300 text-sm transition-colors bg-transparent border-none cursor-pointer"
             >
               Reset
             </button>
@@ -109,12 +109,12 @@ export default function Searchbar() {
             </svg>
             <input
               type="text"
-              placeholder="e.g. Golf Cout"
+              placeholder="e.g. Golf Court"
               value={search}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                 setSearch(e.target.value)
               }
-              className="w-full bg-[#1b3636] border border-[#1e3a5f] rounded-xl pl-9 pr-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors"
+              className="w-full bg-[#1b3636] border border-[#182c2c] rounded-xl pl-9 pr-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors"
             />
             <Button
               onClick={handleSearch}
@@ -177,7 +177,7 @@ export default function Searchbar() {
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                 setMinRate(e.target.value)
               }
-              className="flex-1 w-1/2 bg-[#1b3636] border border-[#1e3a5f] rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+              className="flex-1 w-1/2 bg-[#1b3636] border border-[#182c2c] rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
             />
             <input
               type="number"
@@ -186,7 +186,7 @@ export default function Searchbar() {
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                 setMaxRate(e.target.value)
               }
-              className="flex-1 w-1/2 bg-[#1b3636] border border-[#1e3a5f] rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+              className="flex-1 w-1/2 bg-[#1b3636] border border-[#182c2c] rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
             />
           </div>
         </div>

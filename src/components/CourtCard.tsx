@@ -39,7 +39,7 @@ const CourtCard = ({ r }: CourtCardProps) => {
           alt={r.courtName}
           width={400}
           height={400}
-          className="w-full h-52 object-cover"
+          className="w-full h-52 object-cover object-[50%_20%]"
         />
         <div className="absolute inset-0 bg-linear-to-t from-[#0a2e2e] to-transparent" />
         {/* Floor & Capacity badges overlaid on image */}

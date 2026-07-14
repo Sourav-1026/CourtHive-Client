@@ -97,7 +97,7 @@ const AddCourtPage: React.FC = () => {
     <div className="max-w-4xl mx-auto my-10 px-4">
       {/* Page header */}
       <div className="mb-8">
-        <h1 className="text-3xl sm:text-4xl font-bold text-blue-950">
+        <h1 className="text-3xl sm:text-4xl font-bold text-green-950">
           Add Court
         </h1>
         <p className="text-slate-700 text-sm mt-1">
@@ -107,7 +107,7 @@ const AddCourtPage: React.FC = () => {
 
       <form onSubmit={onSubmit} className="space-y-6">
         {/* Section: Basic Info */}
-        <div className="bg-[#0d1f3c] rounded-2xl p-6 sm:p-8 border border-white/10">
+        <div className="bg-[#0a2e2e] rounded-2xl p-6 sm:p-8 border border-white/10">
           <h2 className="text-white text-sm font-semibold tracking-widest uppercase mb-6 pb-3 border-b border-white/10">
             Basic Information
           </h2>
@@ -120,21 +120,11 @@ const AddCourtPage: React.FC = () => {
                 </Label>
                 <Input
                   placeholder="e.g. Golf Court"
-                  className="w-full bg-[#162d4a] border border-[#1e3a5f] rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors"
+                  className="w-full bg-[#1b3636] border border-[#182c2c] rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors"
                 />
                 <FieldError className="text-red-400 text-xs mt-1" />
               </TextField>
             </div>
-
-            {/* Floor */}
-            {/* <TextField name="floor" type="number" isRequired>
-              <Label className="text-slate-400 text-xs tracking-widest uppercase mb-1.5 block">Floor</Label>
-              <Input
-                placeholder="e.g. 3"
-                className="w-full bg-[#162d4a] border border-[#1e3a5f] rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors"
-              />
-              <FieldError className="text-red-400 text-xs mt-1" />
-            </TextField> */}
 
             {/* Hourly Rate */}
             <div className="sm:col-span-2">
@@ -144,7 +134,7 @@ const AddCourtPage: React.FC = () => {
                 </Label>
                 <Input
                   placeholder="e.g. 25"
-                  className="w-full bg-[#162d4a] border border-[#1e3a5f] rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors"
+                  className="w-full bg-[#1b3636] border border-[#182c2c] rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors"
                 />
                 <FieldError className="text-red-400 text-xs mt-1" />
               </TextField>
@@ -158,7 +148,7 @@ const AddCourtPage: React.FC = () => {
                 </Label>
                 <Input
                   placeholder="e.g. 10"
-                  className="w-full bg-[#162d4a] border border-[#1e3a5f] rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors"
+                  className="w-full bg-[#1b3636] border border-[#182c2c] rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors"
                 />
                 <FieldError className="text-red-400 text-xs mt-1" />
               </TextField>
@@ -173,7 +163,7 @@ const AddCourtPage: React.FC = () => {
                 <Input
                   type="url"
                   placeholder="https://example.com/court.jpg"
-                  className="w-full bg-[#162d4a] border border-[#1e3a5f] rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors"
+                  className="w-full bg-[#1b3636] border border-[#182c2c] rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors"
                 />
                 <FieldError className="text-red-400 text-xs mt-1" />
               </TextField>
@@ -188,7 +178,7 @@ const AddCourtPage: React.FC = () => {
                 <TextArea
                   placeholder="Describe the court — layout, features, ideal use..."
                   rows={4}
-                  className="w-full bg-[#162d4a] border border-[#1e3a5f] rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors resize-none"
+                  className="w-full bg-[#1b3636] border border-[#182c2c] rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors resize-none"
                 />
                 <FieldError className="text-red-400 text-xs mt-1" />
               </TextField>
@@ -197,7 +187,7 @@ const AddCourtPage: React.FC = () => {
         </div>
 
         {/* Section: Amenities */}
-        <div className="bg-[#0d1f3c] rounded-2xl p-6 sm:p-8 border border-white/10">
+        <div className="bg-[#0a2e2e] rounded-2xl p-6 sm:p-8 border border-white/10">
           <h2 className="text-white text-sm font-semibold tracking-widest uppercase mb-1">
             Amenities
           </h2>
@@ -211,7 +201,7 @@ const AddCourtPage: React.FC = () => {
                 className={`flex items-center gap-3 p-3 rounded-xl border transition-colors cursor-pointer ${
                   amenities.includes(label)
                     ? "border-amber-500 bg-amber-500/10"
-                    : "border-[#1e3a5f] bg-[#162d4a] hover:border-slate-500"
+                    : "border-[#182c2c] bg-[#1b3636] hover:border-slate-500"
                 }`}
               >
                 <Checkbox

@@ -37,11 +37,11 @@ const Navbar = () => {
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
-    <nav className="sticky top-0 z-40 w-full border-b border-separator bg-background/70 backdrop-blur-lg">
+    <nav className="sticky top-0 z-40 w-full border-b border-separator bg-[#1b3636] backdrop-blur-lg">
       <header className="flex h-16 items-center justify-between px-6">
         {/* Logo */}
         <div className="flex items-center gap-3">
-          <p className="font-bold text-lg">CourtHive</p>
+          <p className="font-bold text-amber-400 text-lg">CourtHive</p>
         </div>
 
         {/* Desktop links */}
@@ -50,7 +50,7 @@ const Navbar = () => {
             <li key={link.href}>
               <Link
                 href={link.href}
-                className={`text-sm transition-colors pb-1 ${isActive(link.href) ? "border-b-2 border-[#0a2e2e] text-[#0d1f3c] font-medium" : "hover:text-[#0d1f3c]"}`}
+                className={`text-sm text-white transition-colors pb-1 ${isActive(link.href) ? "border-b-2 border-amber-400  font-medium" : "hover:text-amber-300"}`}
               >
                 {link.label}
               </Link>
@@ -102,7 +102,7 @@ const Navbar = () => {
                 <Link
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
-                  className={`text-sm font-medium transition-colors block py-1 ${isActive(link.href) ? "border-l-2 border-[#0d1f3c] pl-3 text-[#0d1f3c]" : "hover:text-[#0d1f3c]"}`}
+                  className={`text-sm text-white font-medium transition-colors block py-1 ${isActive(link.href) ? "border-l-2 border-amber-400 pl-3 " : "hover:text-amber-300"}`}
                 >
                   {link.label}
                 </Link>

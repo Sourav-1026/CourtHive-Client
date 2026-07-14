@@ -50,7 +50,7 @@ const AvatarDropDown = ({ user }: AvatarDropDownProps) => {
         <>
           <div className="fixed inset-0 z-10" onClick={() => setOpen(false)} />
 
-          <div className="absolute right-0 top-12 z-20 w-52 bg-[#0d1f3c] border border-white/10 rounded-2xl overflow-hidden shadow-xl">
+          <div className="absolute right-0 top-12 z-20 w-52 bg-[#0a2e2e] border border-white/10 rounded-2xl overflow-hidden shadow-xl">
             {/* User info */}
             <div className="px-4 py-3 border-b border-white/10">
               <p className="text-sm font-medium text-white leading-5">

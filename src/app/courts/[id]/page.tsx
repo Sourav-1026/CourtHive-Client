@@ -63,7 +63,7 @@ const CourtDetailsPage = async ({ params }: CourtDetailsPageProps) => {
           alt={courtName}
           fill
           priority
-          className="object-cover brightness-[0.6] scale-105 hover:scale-100 transition-transform duration-8000 ease-out"
+          className="object-cover object-[50%_20%] brightness-[0.6] scale-105 hover:scale-100 transition-transform duration-8000 ease-out"
         />
 
         {/* Gradient overlay */}
