@@ -3,12 +3,12 @@
 import React, { useState } from "react";
 import { Button } from "@heroui/react";
 import Link from "next/link";
-import { authClient } from "@/lib/auth-client";
 import { RiMenu3Line, RiCloseLine } from "react-icons/ri";
 import { MdLogin } from "react-icons/md";
 import { BiLogIn } from "react-icons/bi";
 import { usePathname } from "next/navigation";
 import AvatarDropDown from "./AvatarDropDown";
+import { authClient } from "@/lib/auth-client";
 
 interface NavLink {
   href: string;
@@ -33,7 +33,8 @@ const Navbar = () => {
       : []),
   ];
 
-  const isActive = (href: string): boolean => (href === "/" ? pathname === "/" : pathname.startsWith(href));
+  const isActive = (href: string): boolean =>
+    href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
     <nav className="sticky top-0 z-40 w-full border-b border-separator bg-background/70 backdrop-blur-lg">
@@ -47,7 +48,10 @@ const Navbar = () => {
         <ul className="hidden md:flex items-center gap-6">
           {navLinks.map((link) => (
             <li key={link.href}>
-              <Link href={link.href} className={`text-sm transition-colors pb-1 ${isActive(link.href) ? "border-b-2 border-[#0d1f3c] text-[#0d1f3c] font-medium" : "hover:text-[#0d1f3c]"}`}>
+              <Link
+                href={link.href}
+                className={`text-sm transition-colors pb-1 ${isActive(link.href) ? "border-b-2 border-[#0a2e2e] text-[#0d1f3c] font-medium" : "hover:text-[#0d1f3c]"}`}
+              >
                 {link.label}
               </Link>
             </li>
@@ -79,7 +83,11 @@ const Navbar = () => {
         {/* Mobile right side */}
         <div className="flex md:hidden items-center gap-3">
           {user && <AvatarDropDown user={user} />}
-          <button onClick={() => setMenuOpen((prev) => !prev)} className="text-[#0d1f3c] text-2xl focus:outline-none" aria-label="Toggle menu">
+          <button
+            onClick={() => setMenuOpen((prev) => !prev)}
+            className="text-[#0d1f3c] text-2xl focus:outline-none"
+            aria-label="Toggle menu"
+          >
             {menuOpen ? <RiCloseLine /> : <RiMenu3Line />}
           </button>
         </div>
@@ -111,7 +119,9 @@ const Navbar = () => {
                 </Button>
               </Link>
               <Link href="/signup" onClick={() => setMenuOpen(false)}>
-                <Button className="rounded-none bg-[#0d1f3c] text-white w-full hover:bg-white hover:text-[#0d1f3c]">Register</Button>
+                <Button className="rounded-none bg-[#0d1f3c] text-white w-full hover:bg-white hover:text-[#0d1f3c]">
+                  Register
+                </Button>
               </Link>
             </div>
           )}

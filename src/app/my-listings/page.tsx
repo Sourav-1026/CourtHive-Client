@@ -54,7 +54,7 @@ const MyListingPage = async () => {
           <h2 className="text-2xl font-bold text-[#0d1f3c]">No Listings Court Yet</h2>
           <p className="text-gray-500 text-sm">You haven't add any court for listings. Start by adding courts.</p>
           <Link href="/courts">
-            <Button className="bg-[#0d1f3c] text-white hover:bg-amber-400 hover:text-[#0d1f3c] font-semibold px-6 rounded-lg transition-colors">Browse Rooms</Button>
+            <Button className="bg-[#0d1f3c] text-white hover:bg-amber-400 hover:text-[#0d1f3c] font-semibold px-6 rounded-lg transition-colors">Browse Courts</Button>
           </Link>
         </div>
       ) : (

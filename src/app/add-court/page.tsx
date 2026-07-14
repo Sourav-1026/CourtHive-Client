@@ -1,7 +1,15 @@
 "use client";
 
 import { authClient } from "@/lib/auth-client";
-import { FieldError, Input, Label, TextField, TextArea, Button, Checkbox } from "@heroui/react";
+import {
+  FieldError,
+  Input,
+  Label,
+  TextField,
+  TextArea,
+  Button,
+  Checkbox,
+} from "@heroui/react";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
@@ -44,14 +52,24 @@ const AddCourtPage: React.FC = () => {
   const router = useRouter();
 
   const handleAmenityChange = (value: string, checked: boolean): void => {
-    setAmenities((prev) => (checked ? [...prev, value] : prev.filter((a) => a !== value)));
+    setAmenities((prev) =>
+      checked ? [...prev, value] : prev.filter((a) => a !== value),
+    );
   };
 
-  const onSubmit = async (e: React.SyntheticEvent<HTMLFormElement>): Promise<void> => {
+  const onSubmit = async (
+    e: React.SyntheticEvent<HTMLFormElement>,
+  ): Promise<void> => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    const court = Object.fromEntries(formData.entries()) as unknown as CourtFormFields;
-    const finalCourt: FinalCourt = { ...court, amenities: [...amenities], userId: user?.id };
+    const court = Object.fromEntries(
+      formData.entries(),
+    ) as unknown as CourtFormFields;
+    const finalCourt: FinalCourt = {
+      ...court,
+      amenities: [...amenities],
+      userId: user?.id,
+    };
 
     try {
       const { data: tokenData } = await authClient.token();
@@ -79,19 +97,27 @@ const AddCourtPage: React.FC = () => {
     <div className="max-w-4xl mx-auto my-10 px-4">
       {/* Page header */}
       <div className="mb-8">
-        <h1 className="text-3xl sm:text-4xl font-bold text-blue-950">Add Court</h1>
-        <p className="text-slate-700 text-sm mt-1">Fill in the details below to list a new court.</p>
+        <h1 className="text-3xl sm:text-4xl font-bold text-blue-950">
+          Add Court
+        </h1>
+        <p className="text-slate-700 text-sm mt-1">
+          Fill in the details below to list a new court.
+        </p>
       </div>
 
       <form onSubmit={onSubmit} className="space-y-6">
         {/* Section: Basic Info */}
         <div className="bg-[#0d1f3c] rounded-2xl p-6 sm:p-8 border border-white/10">
-          <h2 className="text-white text-sm font-semibold tracking-widest uppercase mb-6 pb-3 border-b border-white/10">Basic Information</h2>
+          <h2 className="text-white text-sm font-semibold tracking-widest uppercase mb-6 pb-3 border-b border-white/10">
+            Basic Information
+          </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             {/* Court Name */}
             <div className="sm:col-span-2">
               <TextField name="courtName" isRequired>
-                <Label className="text-slate-400 text-xs tracking-widest uppercase mb-1.5 block">Court Name</Label>
+                <Label className="text-slate-400 text-xs tracking-widest uppercase mb-1.5 block">
+                  Court Name
+                </Label>
                 <Input
                   placeholder="e.g. Golf Court"
                   className="w-full bg-[#162d4a] border border-[#1e3a5f] rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors"
@@ -111,19 +137,25 @@ const AddCourtPage: React.FC = () => {
             </TextField> */}
 
             {/* Hourly Rate */}
-            <TextField name="rate" type="number" isRequired>
-              <Label className="text-slate-400 text-xs tracking-widest uppercase mb-1.5 block">Hourly Rate (USD)</Label>
-              <Input
-                placeholder="e.g. 25"
-                className="w-full bg-[#162d4a] border border-[#1e3a5f] rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors"
-              />
-              <FieldError className="text-red-400 text-xs mt-1" />
-            </TextField>
+            <div className="sm:col-span-2">
+              <TextField name="rate" type="number" isRequired>
+                <Label className="text-slate-400 text-xs tracking-widest uppercase mb-1.5 block">
+                  Hourly Rate (USD)
+                </Label>
+                <Input
+                  placeholder="e.g. 25"
+                  className="w-full bg-[#162d4a] border border-[#1e3a5f] rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors"
+                />
+                <FieldError className="text-red-400 text-xs mt-1" />
+              </TextField>
+            </div>
 
             {/* Capacity */}
             <div className="sm:col-span-2">
               <TextField name="capacity" type="number" isRequired>
-                <Label className="text-slate-400 text-xs tracking-widest uppercase mb-1.5 block">Capacity (people)</Label>
+                <Label className="text-slate-400 text-xs tracking-widest uppercase mb-1.5 block">
+                  Capacity (people)
+                </Label>
                 <Input
                   placeholder="e.g. 10"
                   className="w-full bg-[#162d4a] border border-[#1e3a5f] rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors"
@@ -135,7 +167,9 @@ const AddCourtPage: React.FC = () => {
             {/* Image URL */}
             <div className="sm:col-span-2">
               <TextField name="imageUrl" isRequired>
-                <Label className="text-slate-400 text-xs tracking-widest uppercase mb-1.5 block">Image URL</Label>
+                <Label className="text-slate-400 text-xs tracking-widest uppercase mb-1.5 block">
+                  Image URL
+                </Label>
                 <Input
                   type="url"
                   placeholder="https://example.com/court.jpg"
@@ -148,7 +182,9 @@ const AddCourtPage: React.FC = () => {
             {/* Description */}
             <div className="sm:col-span-2">
               <TextField name="description" isRequired>
-                <Label className="text-slate-400 text-xs tracking-widest uppercase mb-1.5 block">Description</Label>
+                <Label className="text-slate-400 text-xs tracking-widest uppercase mb-1.5 block">
+                  Description
+                </Label>
                 <TextArea
                   placeholder="Describe the court — layout, features, ideal use..."
                   rows={4}
@@ -162,22 +198,37 @@ const AddCourtPage: React.FC = () => {
 
         {/* Section: Amenities */}
         <div className="bg-[#0d1f3c] rounded-2xl p-6 sm:p-8 border border-white/10">
-          <h2 className="text-white text-sm font-semibold tracking-widest uppercase mb-1">Amenities</h2>
-          <p className="text-slate-400 text-xs mb-6 pb-3 border-b border-white/10">Select all that apply to this court.</p>
+          <h2 className="text-white text-sm font-semibold tracking-widest uppercase mb-1">
+            Amenities
+          </h2>
+          <p className="text-slate-400 text-xs mb-6 pb-3 border-b border-white/10">
+            Select all that apply to this court.
+          </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
             {amenitiesList.map(({ id, label }) => (
               <div
                 key={id}
                 className={`flex items-center gap-3 p-3 rounded-xl border transition-colors cursor-pointer ${
-                  amenities.includes(label) ? "border-amber-500 bg-amber-500/10" : "border-[#1e3a5f] bg-[#162d4a] hover:border-slate-500"
+                  amenities.includes(label)
+                    ? "border-amber-500 bg-amber-500/10"
+                    : "border-[#1e3a5f] bg-[#162d4a] hover:border-slate-500"
                 }`}
               >
-                <Checkbox id={id} isSelected={amenities.includes(label)} onChange={(checked: boolean) => handleAmenityChange(label, checked)}>
+                <Checkbox
+                  id={id}
+                  isSelected={amenities.includes(label)}
+                  onChange={(checked: boolean) =>
+                    handleAmenityChange(label, checked)
+                  }
+                >
                   <Checkbox.Control>
                     <Checkbox.Indicator />
                   </Checkbox.Control>
                   <Checkbox.Content>
-                    <Label className="text-white text-sm cursor-pointer" htmlFor={id}>
+                    <Label
+                      className="text-white text-sm cursor-pointer"
+                      htmlFor={id}
+                    >
                       {label}
                     </Label>
                   </Checkbox.Content>
@@ -187,13 +238,17 @@ const AddCourtPage: React.FC = () => {
           </div>
           {amenities.length > 0 && (
             <p className="text-amber-400 text-xs mt-4">
-              {amenities.length} amenit{amenities.length === 1 ? "y" : "ies"} selected
+              {amenities.length} amenit{amenities.length === 1 ? "y" : "ies"}{" "}
+              selected
             </p>
           )}
         </div>
 
         {/* Submit */}
-        <Button type="submit" className="w-full bg-amber-500 hover:bg-amber-400 text-[#0d1f3c] font-semibold text-sm py-3 rounded-xl transition-colors">
+        <Button
+          type="submit"
+          className="w-full bg-amber-500 hover:bg-amber-400 text-[#0d1f3c] font-semibold text-sm py-3 rounded-xl transition-colors"
+        >
           Add Court
         </Button>
       </form>

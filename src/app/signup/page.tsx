@@ -3,10 +3,10 @@ import React from "react";
 import { Button, Description, FieldError, Form, Input, Label, TextField } from "@heroui/react";
 import { BiCheck } from "react-icons/bi";
 import Link from "next/link";
-import { authClient } from "@/lib/auth-client";
 import { toast } from "react-toastify";
 import { redirect } from "next/navigation";
 import { FcGoogle } from "react-icons/fc";
+import { authClient } from "@/lib/auth-client";
 
 interface SignUpFormFields {
   name: string;

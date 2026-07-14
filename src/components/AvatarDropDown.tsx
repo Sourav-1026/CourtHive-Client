@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { Avatar } from "@heroui/react";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
-// import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
 import { FiLogOut } from "react-icons/fi";
+import { authClient } from "@/lib/auth-client";
 
 interface User {
   name: string;

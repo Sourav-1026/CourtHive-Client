@@ -5,8 +5,8 @@ import { useState, useMemo } from "react";
 import { Button } from "@heroui/react";
 import EditModal from "@/components/EditModal";
 import DeleteModal from "@/components/DeleteModal";
-import { authClient } from "@/lib/auth-client";
 import { toast } from "react-toastify";
+import { authClient } from "@/lib/auth-client";
 
 const TIME_SLOTS = Array.from({ length: 13 }, (_, i) => {
   const hour = 8 + i;

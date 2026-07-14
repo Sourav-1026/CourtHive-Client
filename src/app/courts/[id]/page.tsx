@@ -33,14 +33,18 @@ const CourtDetailsPage = async ({ params }: CourtDetailsPageProps) => {
 
   console.log(token);
 
-  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/courts/${id}`, {
-    headers: {
-      authorization: `Bearer ${token}`,
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_SERVER_URL}/courts/${id}`,
+    {
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
     },
-  });
+  );
   const court: Court = await res.json();
 
-  const { description, imageUrl, capacity, rate, floor, courtName, amenities } = court;
+  const { description, imageUrl, capacity, rate, floor, courtName, amenities } =
+    court;
 
   return (
     <div className="min-h-screen bg-[#f7f4ef] text-[#1a1714]">
@@ -52,7 +56,10 @@ const CourtDetailsPage = async ({ params }: CourtDetailsPageProps) => {
       {/* ── Hero Image ── */}
       <div className="relative h-[90vh] w-full overflow-hidden">
         <Image
-          src={imageUrl || "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1600&q=80"}
+          src={
+            imageUrl ||
+            "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1600&q=80"
+          }
           alt={courtName}
           fill
           priority
@@ -65,7 +72,10 @@ const CourtDetailsPage = async ({ params }: CourtDetailsPageProps) => {
         {/* Hero Text */}
         <div className="absolute bottom-0 left-0 px-8 md:px-16 pb-0">
           <h1 className="font-display text-blue-950 text-6xl md:text-8xl font-normal leading-[0.92] tracking-tight">
-            {courtName?.split(" ").slice(0, -1).join(" ")} <em className="text-[#d4a853]">{courtName?.split(" ").slice(-1)}</em>
+            {courtName?.split(" ").slice(0, -1).join(" ")}{" "}
+            <em className="text-[#d4a853]">
+              {courtName?.split(" ").slice(-1)}
+            </em>
           </h1>
         </div>
       </div>
@@ -78,31 +88,46 @@ const CourtDetailsPage = async ({ params }: CourtDetailsPageProps) => {
             {/* Description */}
             <div className="mb-12">
               <div className="w-12 h-px bg-[#d4a853] mb-6" />
-              <p className="font-body text-[0.65rem] tracking-[0.25em] uppercase text-[#d4a853] mb-4">About This Court</p>
-              <p className="font-display text-xl font-normal leading-relaxed text-[#4a4540] max-w-150">{description}</p>
+              <p className="font-body text-[0.65rem] tracking-[0.25em] uppercase text-[#d4a853] mb-4">
+                About This Court
+              </p>
+              <p className="font-display text-xl font-normal leading-relaxed text-[#4a4540] max-w-150">
+                {description}
+              </p>
             </div>
 
             {/* Stats Row */}
             <div className="flex flex-wrap gap-10 mb-14 pb-14 border-b border-[#1a1714]/10">
               {[
                 { value: capacity, label: "People" },
-                { value: `${floor}`, label: "Floor" },
+                // { value: `${floor}`, label: "Floor" },
               ].map(({ value, label }) => (
                 <div key={label} className="flex flex-col gap-1">
-                  <span className="font-display text-5xl font-normal text-[#1a1714] leading-none">{value}</span>
-                  <span className="font-body text-[0.6rem] tracking-[0.22em] uppercase text-[#a09880]">{label}</span>
+                  <span className="font-display text-5xl font-normal text-[#1a1714] leading-none">
+                    {value}
+                  </span>
+                  <span className="font-body text-[0.6rem] tracking-[0.22em] uppercase text-[#a09880]">
+                    {label}
+                  </span>
                 </div>
               ))}
             </div>
 
             {/* Amenities — mapped from array */}
             <div>
-              <p className="font-body text-[0.65rem] tracking-[0.25em] uppercase text-[#d4a853] mb-6">Court Amenities</p>
+              <p className="font-body text-[0.65rem] tracking-[0.25em] uppercase text-[#d4a853] mb-6">
+                Court Amenities
+              </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10">
                 {amenities?.map((amenity, index) => (
-                  <div key={index} className="flex items-center gap-3 py-3 border-b border-black/6">
+                  <div
+                    key={index}
+                    className="flex items-center gap-3 py-3 border-b border-black/6"
+                  >
                     <span className="w-1.5 h-1.5 rounded-full bg-[#d4a853] shrink-0" />
-                    <span className="font-body text-sm text-[#6b6358]">{amenity}</span>
+                    <span className="font-body text-sm text-[#6b6358]">
+                      {amenity}
+                    </span>
                   </div>
                 ))}
               </div>
