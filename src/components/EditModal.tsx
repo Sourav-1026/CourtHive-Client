@@ -89,7 +89,7 @@ const EditModal = ({ court }: EditModalProps) => {
         });
         router.push("/courts");
 
-        // e.g. router.push("/rooms") or show a toast
+        // e.g. router.push("/courts") or show a toast
       } else {
         console.error("Failed to add court:", data.message);
         toast.error("Failed to add court:", data.message);
