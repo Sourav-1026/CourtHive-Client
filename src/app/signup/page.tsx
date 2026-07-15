@@ -79,7 +79,7 @@ const SignUpPage: React.FC = () => {
               </Label>
               <Input
                 placeholder="John Doe"
-                className="w-full bg-[#1b3636] border border-[#182c2c] rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors"
+                className="w-full bg-[#1b3636] border border-lime-500/50 rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors"
               />
               <FieldError className="text-red-400 text-xs mt-1" />
             </TextField>
@@ -101,7 +101,7 @@ const SignUpPage: React.FC = () => {
               </Label>
               <Input
                 placeholder="john@example.com"
-                className="w-full bg-[#1b3636] border border-[#182c2c] rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors"
+                className="w-full bg-[#1b3636] border border-lime-500/50 rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors"
               />
               <FieldError className="text-red-400 text-xs mt-1" />
             </TextField>
@@ -113,7 +113,7 @@ const SignUpPage: React.FC = () => {
               </Label>
               <Input
                 placeholder="https://example.com/avatar.jpg"
-                className="w-full bg-[#1b3636] border border-[#182c2c] rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors"
+                className="w-full bg-[#1b3636] border border-lime-500/50 rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors"
               />
               <FieldError className="text-red-400 text-xs mt-1" />
             </TextField>
@@ -139,7 +139,7 @@ const SignUpPage: React.FC = () => {
               </Label>
               <Input
                 placeholder="••••••••"
-                className="w-full bg-[#1b3636] border border-[#182c2c] rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors"
+                className="w-full bg-[#1b3636] border border-lime-500/50 rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors"
               />
               <Description className="text-slate-500 text-xs mt-1">
                 At least 6 characters, 1 uppercase letter and 1 number.
@@ -150,7 +150,7 @@ const SignUpPage: React.FC = () => {
             {/* Submit */}
             <Button
               type="submit"
-              className="w-full bg-amber-500 hover:bg-amber-400 text-[#0d1f3c] font-semibold text-sm py-3 rounded-xl transition-colors flex items-center justify-center gap-2 mt-1"
+              className="w-full bg-lime-500 hover:bg-lime-400 text-[#0d1f3c] font-semibold text-sm py-3 rounded-xl transition-colors flex items-center justify-center gap-2 mt-1"
             >
               <BiCheck size={18} />
               Create Account
@@ -180,7 +180,7 @@ const SignUpPage: React.FC = () => {
               Already have an account?{" "}
               <Link
                 href="/login"
-                className="text-amber-400 hover:text-amber-300 font-medium transition-colors"
+                className="text-lime-500 hover:text-lime-400 font-medium transition-colors"
               >
                 Login
               </Link>

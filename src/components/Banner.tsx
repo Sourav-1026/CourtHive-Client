@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 
 const Banner = () => {
   return (
-    <div className="container mx-auto bg-linear-to-r from-[#0a2e2e] via-black to-[#0a2e2e] my-10">
+    <div className="container mx-auto bg-linear-to-r from-[#0d1f14] via-black to-[#0d1f14] my-10">
       <div className="p-5 text-center space-y-6 py-20">
         <motion.h1
           className="text-4xl text-white font-bold"
@@ -16,7 +16,7 @@ const Banner = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
         >
-          Find <span className="text-amber-400">Your Perfect</span> Court
+          Find <span className="text-lime-400">Your Perfect</span> Court
         </motion.h1>
 
         <motion.p
@@ -35,7 +35,7 @@ const Banner = () => {
           transition={{ duration: 0.8, delay: 0.6 }}
         >
           <Link href="/courts">
-            <Button className="rounded-md bg-amber-400 text-black font-semibold border-none hover:bg-amber-300 transition-colors">
+            <Button className="rounded-md bg-lime-500 text-black font-semibold border-none hover:bg-lime-400 transition-colors">
               Explore
               <FaArrowRightLong />
             </Button>

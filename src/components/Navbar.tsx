@@ -31,17 +31,19 @@ const Navbar = () => {
           { href: "/my-bookings", label: "My Bookings" },
         ]
       : []),
+    { href: "/about", label: "About" },
+    { href: "/contact", label: "Contact" },
   ];
 
   const isActive = (href: string): boolean =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
-    <nav className="sticky top-0 z-40 w-full border-b border-separator bg-[#1b3636] backdrop-blur-lg">
+    <nav className="sticky top-0 z-40 w-full border-b border-separator bg-[#0d1f14] backdrop-blur-lg">
       <header className="flex h-16 items-center justify-between px-6">
         {/* Logo */}
         <div className="flex items-center gap-3">
-          <p className="font-bold text-amber-400 text-lg">CourtHive</p>
+          <p className="font-bold text-lime-400 text-lg">CourtHive</p>
         </div>
 
         {/* Desktop links */}
@@ -50,7 +52,7 @@ const Navbar = () => {
             <li key={link.href}>
               <Link
                 href={link.href}
-                className={`text-sm text-white transition-colors pb-1 ${isActive(link.href) ? "border-b-2 border-amber-400  font-medium" : "hover:text-amber-300"}`}
+                className={`text-sm text-white transition-colors pb-1 ${isActive(link.href) ? "border-b-2 border-lime-400  font-medium" : "hover:text-lime-400"}`}
               >
                 {link.label}
               </Link>
@@ -65,13 +67,13 @@ const Navbar = () => {
           ) : (
             <>
               <Link href="/login">
-                <Button className="rounded-none bg-transparent text-amber-400 border border-amber-400 hover:bg-amber-300 hover:text-white">
+                <Button className="rounded-none bg-transparent text-lime-500 border border-lime-500 hover:bg-lime-400 hover:text-white">
                   Login
                   <MdLogin />
                 </Button>
               </Link>
               <Link href="/signup">
-                <Button className="rounded-none bg-amber-300 text-black">
+                <Button className="rounded-none bg-lime-500 text-black hover:bg-lime-400">
                   Register
                   <MdLogin />
                 </Button>
@@ -85,7 +87,7 @@ const Navbar = () => {
           {user && <AvatarDropDown user={user} />}
           <button
             onClick={() => setMenuOpen((prev) => !prev)}
-            className="text-[#0d1f3c] text-2xl focus:outline-none"
+            className="text-lime-500 text-2xl focus:outline-none"
             aria-label="Toggle menu"
           >
             {menuOpen ? <RiCloseLine /> : <RiMenu3Line />}
@@ -95,14 +97,14 @@ const Navbar = () => {
 
       {/* Mobile dropdown menu */}
       {menuOpen && (
-        <div className="md:hidden border-t border-separator bg-background/95 backdrop-blur-lg px-6 py-4 flex flex-col gap-4">
+        <div className="md:hidden border-t border-separator bg-[#0d1f14] backdrop-blur-lg px-6 py-4 flex flex-col gap-4">
           <ul className="flex flex-col gap-3">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
-                  className={`text-sm text-white font-medium transition-colors block py-1 ${isActive(link.href) ? "border-l-2 border-amber-400 pl-3 " : "hover:text-amber-300"}`}
+                  className={`text-sm text-white font-medium transition-colors block py-1 ${isActive(link.href) ? "border-l-2 border-lime-400 pl-3 " : "hover:text-lime-300"}`}
                 >
                   {link.label}
                 </Link>
@@ -113,13 +115,13 @@ const Navbar = () => {
           {!user && (
             <div className="flex flex-col gap-2 pt-2 border-t border-separator">
               <Link href="/login" onClick={() => setMenuOpen(false)}>
-                <Button className="rounded-none bg-transparent text-[#0d1f3c] border border-[#0d1f3c] hover:bg-[#0d1f3c] hover:text-white w-full">
+                <Button className="rounded-none bg-transparent text-lime-500 border border-lime-500 hover:bg-lime-400 hover:text-white w-full">
                   Login
                   <BiLogIn />
                 </Button>
               </Link>
               <Link href="/signup" onClick={() => setMenuOpen(false)}>
-                <Button className="rounded-none bg-[#0d1f3c] text-white w-full hover:bg-white hover:text-[#0d1f3c]">
+                <Button className="rounded-none bg-lime-500 text-black w-full hover:bg-lime-400">
                   Register
                 </Button>
               </Link>

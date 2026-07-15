@@ -35,11 +35,11 @@ const AvatarDropDown = ({ user }: AvatarDropDownProps) => {
   return (
     <div className="relative">
       <button onClick={() => setOpen(!open)} className="focus:outline-none">
-        <Avatar className="cursor-pointer ring-2 ring-amber-500/40 hover:ring-amber-500 transition-all rounded-full">
+        <Avatar className="cursor-pointer ring-2 ring-lime-500/40 hover:ring-lime-500 transition-all rounded-full">
           <Avatar.Image alt={user?.name} src={user?.image ?? undefined} />
           <Avatar.Fallback
             delayMs={600}
-            className="bg-[#162d4a] text-white font-medium"
+            className="bg-[#0d1f14] text-white font-medium"
           >
             {user?.name.charAt(0)}
           </Avatar.Fallback>
@@ -50,7 +50,7 @@ const AvatarDropDown = ({ user }: AvatarDropDownProps) => {
         <>
           <div className="fixed inset-0 z-10" onClick={() => setOpen(false)} />
 
-          <div className="absolute right-0 top-12 z-20 w-52 bg-[#0a2e2e] border border-white/10 rounded-2xl overflow-hidden shadow-xl">
+          <div className="absolute right-0 top-12 z-20 w-52 bg-[#0d1f14] border border-white/10 rounded-2xl overflow-hidden shadow-xl">
             {/* User info */}
             <div className="px-4 py-3 border-b border-white/10">
               <p className="text-sm font-medium text-white leading-5">

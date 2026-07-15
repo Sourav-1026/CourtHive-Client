@@ -20,7 +20,6 @@ const linkMap: Record<string, string> = {
 const Footer = () => {
   const { data: session } = authClient.useSession();
   const user = session?.user;
-  console.log(user);
 
   const allLinks = ["Courts", "Add Court", "My Listings", "My Bookings"];
   const publicLinks = ["Courts"];
@@ -29,7 +28,7 @@ const Footer = () => {
   const visibleLinks = user ? allLinks : publicLinks;
 
   return (
-    <footer className="relative overflow-hidden bg-[#0a2e2e] text-[#e8edf5]">
+    <footer className="relative overflow-hidden bg-[#0d1f14] text-[#e8edf5]">
       {/* Glow effects */}
       <div className="pointer-events-none absolute -right-20 -top-20 h-80 w-80 rounded-full bg-[radial-gradient(circle,rgba(99,160,255,0.12)_0%,transparent_70%)]" />
       <div className="pointer-events-none absolute -left-16 bottom-16 h-64 w-64 rounded-full bg-[radial-gradient(circle,rgba(77,220,180,0.08)_0%,transparent_70%)]" />
@@ -74,7 +73,7 @@ const Footer = () => {
             </p>
             <div className="flex flex-col  gap-3.5">
               {[
-                { Icon: FaRegEnvelope, label: "courthive@gmail.com" },
+                { Icon: FaRegEnvelope, label: "support@courthive.com" },
                 { Icon: FaPhoneAlt, label: "01954 844 656" },
               ].map(({ Icon, label }) => (
                 <div

@@ -107,7 +107,7 @@ const AddCourtPage: React.FC = () => {
 
       <form onSubmit={onSubmit} className="space-y-6">
         {/* Section: Basic Info */}
-        <div className="bg-[#0a2e2e] rounded-2xl p-6 sm:p-8 border border-white/10">
+        <div className="bg-[#0d1f14] rounded-2xl p-6 sm:p-8 border border-white/10">
           <h2 className="text-white text-sm font-semibold tracking-widest uppercase mb-6 pb-3 border-b border-white/10">
             Basic Information
           </h2>
@@ -120,7 +120,7 @@ const AddCourtPage: React.FC = () => {
                 </Label>
                 <Input
                   placeholder="e.g. Golf Court"
-                  className="w-full bg-[#1b3636] border border-[#182c2c] rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors"
+                  className="w-full bg-[#1b3636] border border-lime-500/50 rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors"
                 />
                 <FieldError className="text-red-400 text-xs mt-1" />
               </TextField>
@@ -134,7 +134,7 @@ const AddCourtPage: React.FC = () => {
                 </Label>
                 <Input
                   placeholder="e.g. 25"
-                  className="w-full bg-[#1b3636] border border-[#182c2c] rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors"
+                  className="w-full bg-[#1b3636] border border-lime-500/50 rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors"
                 />
                 <FieldError className="text-red-400 text-xs mt-1" />
               </TextField>
@@ -148,7 +148,7 @@ const AddCourtPage: React.FC = () => {
                 </Label>
                 <Input
                   placeholder="e.g. 10"
-                  className="w-full bg-[#1b3636] border border-[#182c2c] rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors"
+                  className="w-full bg-[#1b3636] border border-lime-500/50 rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors"
                 />
                 <FieldError className="text-red-400 text-xs mt-1" />
               </TextField>
@@ -163,7 +163,7 @@ const AddCourtPage: React.FC = () => {
                 <Input
                   type="url"
                   placeholder="https://example.com/court.jpg"
-                  className="w-full bg-[#1b3636] border border-[#182c2c] rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors"
+                  className="w-full bg-[#1b3636] border border-lime-500/50 rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors"
                 />
                 <FieldError className="text-red-400 text-xs mt-1" />
               </TextField>
@@ -178,7 +178,7 @@ const AddCourtPage: React.FC = () => {
                 <TextArea
                   placeholder="Describe the court — layout, features, ideal use..."
                   rows={4}
-                  className="w-full bg-[#1b3636] border border-[#182c2c] rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors resize-none"
+                  className="w-full bg-[#1b3636] border border-lime-500/50 rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors resize-none"
                 />
                 <FieldError className="text-red-400 text-xs mt-1" />
               </TextField>
@@ -187,7 +187,7 @@ const AddCourtPage: React.FC = () => {
         </div>
 
         {/* Section: Amenities */}
-        <div className="bg-[#0a2e2e] rounded-2xl p-6 sm:p-8 border border-white/10">
+        <div className="bg-[#0d1f14] rounded-2xl p-6 sm:p-8 border border-white/10">
           <h2 className="text-white text-sm font-semibold tracking-widest uppercase mb-1">
             Amenities
           </h2>
@@ -200,7 +200,7 @@ const AddCourtPage: React.FC = () => {
                 key={id}
                 className={`flex items-center gap-3 p-3 rounded-xl border transition-colors cursor-pointer ${
                   amenities.includes(label)
-                    ? "border-amber-500 bg-amber-500/10"
+                    ? "border-lime-500 bg-lime-500/10"
                     : "border-[#182c2c] bg-[#1b3636] hover:border-slate-500"
                 }`}
               >
@@ -227,7 +227,7 @@ const AddCourtPage: React.FC = () => {
             ))}
           </div>
           {amenities.length > 0 && (
-            <p className="text-amber-400 text-xs mt-4">
+            <p className="text-lime-400 text-xs mt-4">
               {amenities.length} amenit{amenities.length === 1 ? "y" : "ies"}{" "}
               selected
             </p>
@@ -237,7 +237,7 @@ const AddCourtPage: React.FC = () => {
         {/* Submit */}
         <Button
           type="submit"
-          className="w-full bg-amber-500 hover:bg-amber-400 text-[#0d1f3c] font-semibold text-sm py-3 rounded-xl transition-colors"
+          className="w-full bg-lime-500 hover:bg-lime-400 text-[#0d1f3c] font-semibold text-sm py-3 rounded-xl transition-colors"
         >
           Add Court
         </Button>

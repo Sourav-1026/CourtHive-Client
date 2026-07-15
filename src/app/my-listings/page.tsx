@@ -30,8 +30,6 @@ const MyListingPage = async () => {
   });
 
   const user = session?.user;
-  console.log(user);
-  // console.log(session);
   const { token } = await auth.api.getToken({
     headers: await headers(),
   });
@@ -44,15 +42,14 @@ const MyListingPage = async () => {
     },
   );
   const listingsCourt: Court[] = await res.json();
-  console.log(listingsCourt);
 
   return (
     <div className="max-w-7xl mx-auto my-10">
       <h1 className="text-4xl text-center font-bold mb-6">My Listings</h1>
       {listingsCourt.length == 0 ? (
         <div className="container mx-auto mt-6 flex flex-col justify-center items-center py-20 gap-4">
-          <div className="bg-[#0a2e2e] p-6 rounded-full">
-            <BsCalendarX className="text-amber-400 text-5xl" />
+          <div className="bg-[#0d1f14] p-6 rounded-full">
+            <BsCalendarX className="text-lime-400 text-5xl" />
           </div>
           <h2 className="text-2xl font-bold text-[#0a2e2e]">
             No Listings Court Yet
@@ -60,9 +57,9 @@ const MyListingPage = async () => {
           <p className="text-gray-500 text-sm">
             You haven't add any court for listings. Start by adding courts.
           </p>
-          <Link href="/courts">
-            <Button className="bg-[#0a2e2e] text-white hover:bg-amber-400 hover:text-[#0d1f3c] font-semibold px-6 rounded-lg transition-colors">
-              Browse Courts
+          <Link href="/add-court">
+            <Button className="bg-lime-500 text-black hover:bg-lime-400 hover:text-[#0d1f3c] font-semibold px-6 rounded-lg transition-colors">
+              Add Court
             </Button>
           </Link>
         </div>

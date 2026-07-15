@@ -5,19 +5,17 @@ interface Court {
   _id: string;
   [key: string]: unknown;
   courtName: string;
-    imageUrl: string;
-    description: string;
-    rate: number;
-    capacity: number;
-    amenities: string[];
+  imageUrl: string;
+  description: string;
+  rate: number;
+  capacity: number;
+  amenities: string[];
 }
 
 const AvailableCourts = async () => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/courts`);
 
   const courts: Court[] = await res.json();
-
-  // console.log(rooms);
 
   return (
     <div className="max-w-7xl mx-auto my-10">

@@ -1,7 +1,16 @@
 "use client";
 
 import React, { useState } from "react";
-import { Button,  Checkbox, FieldError, Input, Label, Modal,  TextArea, TextField } from "@heroui/react";
+import {
+  Button,
+  Checkbox,
+  FieldError,
+  Input,
+  Label,
+  Modal,
+  TextArea,
+  TextField,
+} from "@heroui/react";
 import { FaRegEdit } from "react-icons/fa";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
@@ -28,8 +37,8 @@ type EditModalProps = {
     capacity: number;
     rate: number;
     imageUrl: string;
-  }
-}
+  };
+};
 
 const EditModal = ({ court }: EditModalProps) => {
   const router = useRouter();
@@ -37,8 +46,10 @@ const EditModal = ({ court }: EditModalProps) => {
 
   const [amenities, setAmenities] = useState<string[]>([]);
 
-  const handleAmenityChange = (value:string, checked:boolean) => {
-    setAmenities((prev) => (checked ? [...prev, value] : prev.filter((a) => a !== value)));
+  const handleAmenityChange = (value: string, checked: boolean) => {
+    setAmenities((prev) =>
+      checked ? [...prev, value] : prev.filter((a) => a !== value),
+    );
   };
 
   //   const router = useRouter();
@@ -55,22 +66,21 @@ const EditModal = ({ court }: EditModalProps) => {
       amenities: [...amenities],
     };
 
-    console.log(finalCourt);
-
     try {
       const { data: tokenData } = await authClient.token();
-      console.log(tokenData);
-      const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/courts/${_id}`, {
-        method: "PATCH",
-        headers: {
-          "content-type": "application/json",
-          authorization: `Bearer ${tokenData?.token}`,
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_SERVER_URL}/courts/${_id}`,
+        {
+          method: "PATCH",
+          headers: {
+            "content-type": "application/json",
+            authorization: `Bearer ${tokenData?.token}`,
+          },
+          body: JSON.stringify(finalCourt),
         },
-        body: JSON.stringify(finalCourt),
-      });
+      );
 
       const data = await res.json();
-      console.log(data);
 
       if (data) {
         console.log("Court added successfully!", data.insertedId);
@@ -91,19 +101,23 @@ const EditModal = ({ court }: EditModalProps) => {
 
   return (
     <Modal>
-      <Button className="flex-1 rounded-xl bg-transparent text-amber-400 border border-amber-400 text-xs tracking-widest uppercase px-4 py-2 hover:bg-amber-400/10 transition-colors">Edit Court</Button>
+      <Button className="flex-1 rounded-xl bg-transparent text-lime-500 border border-lime-500 text-xs tracking-widest uppercase px-4 py-2 hover:bg-lime-400/10 transition-colors">
+        Edit Court
+      </Button>
       <Modal.Backdrop>
         <Modal.Container placement="auto">
-          <Modal.Dialog className="w-full sm:max-w-2xl bg-[#0d1f3c] rounded-2xl border border-white/10 mx-4 sm:mx-auto">
-            <Modal.CloseTrigger className="text-slate-400 hover:text-white" />
+          <Modal.Dialog className="w-full sm:max-w-2xl bg-[#0d1f14] rounded-2xl border border-white/10 mx-4 sm:mx-auto">
+            <Modal.CloseTrigger className="bg-[#0d1f14] text-lime-500 hover:text-lime-400" />
 
             {/* Modal Header */}
             <Modal.Header className="px-6 pt-6 pb-0">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400">
+                <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-lime-400">
                   <FaRegEdit size={16} />
                 </div>
-                <Modal.Heading className="text-xl font-semibold text-white">Edit Court</Modal.Heading>
+                <Modal.Heading className="text-xl font-semibold text-white">
+                  Edit Court
+                </Modal.Heading>
               </div>
             </Modal.Header>
 
@@ -111,67 +125,94 @@ const EditModal = ({ court }: EditModalProps) => {
               <form onSubmit={onSubmit} className="flex flex-col gap-6">
                 {/* Basic Info */}
                 <div>
-                  <p className="text-slate-400 text-xs tracking-widest uppercase mb-4 pb-3 border-b border-white/10">Basic Information</p>
+                  <p className="text-slate-400 text-xs tracking-widest uppercase mb-4 pb-3 border-b border-white/10">
+                    Basic Information
+                  </p>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="sm:col-span-2">
-                      <TextField name="courtName" isRequired defaultValue={courtName}>
-                        <Label className="text-slate-400 text-xs tracking-widest uppercase mb-1.5 block">Court Name</Label>
+                      <TextField
+                        name="courtName"
+                        isRequired
+                        defaultValue={courtName}
+                      >
+                        <Label className="text-slate-400 text-xs tracking-widest uppercase mb-1.5 block">
+                          Court Name
+                        </Label>
                         <Input
                           placeholder="e.g. Golf Court"
-                          className="w-full bg-[#162d4a] border border-[#1e3a5f] rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors"
+                          className="w-full bg-[#1b3636] border border-lime-500/50 rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors"
                         />
                         <FieldError className="text-red-400 text-xs mt-1" />
                       </TextField>
                     </div>
 
-                    {/* <TextField name="floor" type="number" isRequired defaultValue={floor}>
-                      <Label className="text-slate-400 text-xs tracking-widest uppercase mb-1.5 block">Floor</Label>
-                      <Input
-                        placeholder="e.g. 3"
-                        className="w-full bg-[#162d4a] border border-[#1e3a5f] rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors"
-                      />
-                      <FieldError className="text-red-400 text-xs mt-1" />
-                    </TextField> */}
-
-                    <TextField name="rate" type="number" isRequired defaultValue={String(rate)}>
-                      <Label className="text-slate-400 text-xs tracking-widest uppercase mb-1.5 block">Hourly Rate (USD)</Label>
-                      <Input
-                        placeholder="e.g. 25"
-                        className="w-full bg-[#162d4a] border border-[#1e3a5f] rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors"
-                      />
-                      <FieldError className="text-red-400 text-xs mt-1" />
-                    </TextField>
+                    <div className="sm:col-span-2">
+                      <TextField
+                        name="rate"
+                        type="number"
+                        isRequired
+                        defaultValue={String(rate)}
+                      >
+                        <Label className="text-slate-400 text-xs tracking-widest uppercase mb-1.5 block">
+                          Hourly Rate (USD)
+                        </Label>
+                        <Input
+                          placeholder="e.g. 25"
+                          className="w-full bg-[#1b3636] border border-lime-500/50 rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors"
+                        />
+                        <FieldError className="text-red-400 text-xs mt-1" />
+                      </TextField>
+                    </div>
 
                     <div className="sm:col-span-2">
-                      <TextField name="capacity" type="number" isRequired defaultValue={String(capacity)}>
-                        <Label className="text-slate-400 text-xs tracking-widest uppercase mb-1.5 block">Capacity (people)</Label>
+                      <TextField
+                        name="capacity"
+                        type="number"
+                        isRequired
+                        defaultValue={String(capacity)}
+                      >
+                        <Label className="text-slate-400 text-xs tracking-widest uppercase mb-1.5 block">
+                          Capacity (people)
+                        </Label>
                         <Input
                           placeholder="e.g. 10"
-                          className="w-full bg-[#162d4a] border border-[#1e3a5f] rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors"
+                          className="w-full bg-[#1b3636] border border-lime-500/50 rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors"
                         />
                         <FieldError className="text-red-400 text-xs mt-1" />
                       </TextField>
                     </div>
 
                     <div className="sm:col-span-2">
-                      <TextField name="imageUrl" isRequired defaultValue={imageUrl}>
-                        <Label className="text-slate-400 text-xs tracking-widest uppercase mb-1.5 block">Image URL</Label>
+                      <TextField
+                        name="imageUrl"
+                        isRequired
+                        defaultValue={imageUrl}
+                      >
+                        <Label className="text-slate-400 text-xs tracking-widest uppercase mb-1.5 block">
+                          Image URL
+                        </Label>
                         <Input
                           type="url"
                           placeholder="https://example.com/court.jpg"
-                          className="w-full bg-[#162d4a] border border-[#1e3a5f] rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors"
+                          className="w-full bg-[#1b3636] border border-lime-500/50 rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors"
                         />
                         <FieldError className="text-red-400 text-xs mt-1" />
                       </TextField>
                     </div>
 
                     <div className="sm:col-span-2">
-                      <TextField name="description" isRequired defaultValue={description}>
-                        <Label className="text-slate-400 text-xs tracking-widest uppercase mb-1.5 block">Description</Label>
+                      <TextField
+                        name="description"
+                        isRequired
+                        defaultValue={description}
+                      >
+                        <Label className="text-slate-400 text-xs tracking-widest uppercase mb-1.5 block">
+                          Description
+                        </Label>
                         <TextArea
                           placeholder="Describe the court..."
                           rows={3}
-                          className="w-full bg-[#162d4a] border border-[#1e3a5f] rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors resize-none"
+                          className="w-full bg-[#1b3636] border border-lime-500/50 rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors resize-none"
                         />
                         <FieldError className="text-red-400 text-xs mt-1" />
                       </TextField>
@@ -181,7 +222,9 @@ const EditModal = ({ court }: EditModalProps) => {
 
                 {/* Amenities */}
                 <div>
-                  <p className="text-slate-400 text-xs tracking-widest uppercase mb-4 pb-3 border-b border-white/10">Amenities</p>
+                  <p className="text-slate-400 text-xs tracking-widest uppercase mb-4 pb-3 border-b border-white/10">
+                    Amenities
+                  </p>
                   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
                     {amenitiesList.map(({ id, label }) => {
                       const checked = amenities?.includes(label);
@@ -189,15 +232,26 @@ const EditModal = ({ court }: EditModalProps) => {
                         <div
                           key={id}
                           className={`flex items-center gap-3 p-3 rounded-xl border transition-colors cursor-pointer ${
-                            checked ? "border-amber-500 bg-amber-500/10" : "border-[#1e3a5f] bg-[#162d4a] hover:border-slate-500"
+                            checked
+                              ? "border-lime-500 bg-lime-500/10"
+                              : "border-[#182c2c] bg-[#1b3636] hover:border-slate-500"
                           }`}
                         >
-                          <Checkbox id={id} isSelected={checked} onChange={(isChecked) => handleAmenityChange(label, isChecked)}>
+                          <Checkbox
+                            id={id}
+                            isSelected={checked}
+                            onChange={(isChecked) =>
+                              handleAmenityChange(label, isChecked)
+                            }
+                          >
                             <Checkbox.Control>
                               <Checkbox.Indicator />
                             </Checkbox.Control>
                             <Checkbox.Content>
-                              <Label className="text-white text-sm cursor-pointer" htmlFor={id}>
+                              <Label
+                                className="text-white text-sm cursor-pointer"
+                                htmlFor={id}
+                              >
                                 {label}
                               </Label>
                             </Checkbox.Content>
@@ -210,10 +264,17 @@ const EditModal = ({ court }: EditModalProps) => {
 
                 {/* Footer buttons */}
                 <div className="flex flex-col sm:flex-row gap-3 pt-2 border-t border-white/10">
-                  <Button slot="close" className="flex-1 bg-[#162d4a] hover:bg-[#1e3a5f] text-slate-300 text-sm font-medium py-2.5 rounded-xl border border-[#1e3a5f] transition-colors">
+                  <Button
+                    slot="close"
+                    className="flex-1 text-lime-500 border bg-transparent border-lime-500  text-sm font-medium py-2.5 rounded-xl  transition-colors"
+                  >
                     Cancel
                   </Button>
-                  <Button type="submit" slot="close" className="flex-1 bg-amber-500 hover:bg-amber-400 text-[#0d1f3c] text-sm font-semibold py-2.5 rounded-xl transition-colors">
+                  <Button
+                    type="submit"
+                    slot="close"
+                    className="flex-1 bg-lime-500 hover:bg-lime-400 text-[#0d1f3c] text-sm font-semibold py-2.5 rounded-xl transition-colors"
+                  >
                     Update Court
                   </Button>
                 </div>

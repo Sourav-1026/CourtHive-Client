@@ -54,14 +54,14 @@ export default function Searchbar() {
 
   return (
     <div className="px-4 md:px-0">
-      <div className="bg-[#0a2e2e] rounded-2xl p-7 w-full lg:max-w-sm">
+      <div className="bg-[#0d1f14] rounded-2xl p-7 w-full lg:max-w-sm">
         {/* Header */}
         <div className="flex justify-between items-center mb-6">
           <div className=""></div>
           <div className="flex items-center gap-3">
             <button
               onClick={handleReset}
-              className="text-amber-400 hover:text-amber-300 transition-colors bg-transparent border-none cursor-pointer"
+              className="text-lime-500 hover:text-lime-400 transition-colors bg-transparent border-none cursor-pointer"
               aria-label="Close"
             >
               <svg
@@ -81,7 +81,7 @@ export default function Searchbar() {
             </button>
             <button
               onClick={handleReset}
-              className="text-amber-400 hover:text-amber-300 text-sm transition-colors bg-transparent border-none cursor-pointer"
+              className="text-lime-500 hover:text-lime-400 text-sm transition-colors bg-transparent border-none cursor-pointer"
             >
               Reset
             </button>
@@ -114,12 +114,12 @@ export default function Searchbar() {
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                 setSearch(e.target.value)
               }
-              className="w-full bg-[#1b3636] border border-[#182c2c] rounded-xl pl-9 pr-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors"
+              className="w-full bg-[#1b3636] border border-lime-500/50 rounded-xl pl-9 pr-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors"
             />
             <Button
               onClick={handleSearch}
               className={
-                "rounded-md bg-amber-500 hover:bg-amber-400 text-[#0d1f3c]"
+                "rounded-md bg-lime-500 hover:bg-lime-400 text-[#0d1f3c]"
               }
             >
               Search
@@ -140,7 +140,7 @@ export default function Searchbar() {
                   className="flex items-center gap-3 cursor-pointer"
                 >
                   <div
-                    className={`w-5 h-5 rounded-full border-2 border-amber-500 flex items-center justify-center shrink-0 transition-colors ${checked ? "bg-amber-500" : "bg-transparent"}`}
+                    className={`w-5 h-5 rounded-full border-2 border-lime-500 flex items-center justify-center shrink-0 transition-colors ${checked ? "bg-lime-500" : "bg-transparent"}`}
                   >
                     {checked && (
                       <svg
@@ -177,7 +177,7 @@ export default function Searchbar() {
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                 setMinRate(e.target.value)
               }
-              className="flex-1 w-1/2 bg-[#1b3636] border border-[#182c2c] rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+              className="flex-1 w-1/2 bg-[#1b3636] border border-lime-500/50 rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
             />
             <input
               type="number"
@@ -186,7 +186,7 @@ export default function Searchbar() {
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                 setMaxRate(e.target.value)
               }
-              className="flex-1 w-1/2 bg-[#1b3636] border border-[#182c2c] rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+              className="flex-1 w-1/2 bg-[#1b3636] border border-lime-500/50 rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
             />
           </div>
         </div>

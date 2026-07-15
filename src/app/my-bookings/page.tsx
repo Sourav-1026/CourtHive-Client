@@ -55,8 +55,8 @@ const MyBookingsPage = async () => {
 
       {bookings.length === 0 ? (
         <div className="container mx-auto mt-6 flex flex-col justify-center items-center py-20 gap-4">
-          <div className="bg-[#0a2e2e] p-6 rounded-full">
-            <BsCalendarX className="text-amber-400 text-5xl" />
+          <div className="bg-[#0d1f14] p-6 rounded-full">
+            <BsCalendarX className="text-lime-400 text-5xl" />
           </div>
           <h2 className="text-2xl font-bold text-[#0a2e2e]">No Bookings Yet</h2>
           <p className="text-gray-500 text-sm">
@@ -64,7 +64,7 @@ const MyBookingsPage = async () => {
             courts.
           </p>
           <Link href="/courts">
-            <Button className="bg-[#0a2e2e] text-white hover:bg-amber-400 hover:text-[#0d1f3c] font-semibold px-6 rounded-lg transition-colors">
+            <Button className="bg-lime-500 text-black hover:bg-lime-400 hover:text-[#0d1f3c] font-semibold px-6 rounded-lg transition-colors">
               Browse Courts
             </Button>
           </Link>

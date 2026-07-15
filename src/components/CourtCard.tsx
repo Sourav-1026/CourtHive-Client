@@ -23,7 +23,7 @@ const CourtCard = ({ r }: CourtCardProps) => {
   return (
     <motion.div
       className="rounded-xl overflow-hidden flex flex-col border border-white/10 shadow-xl"
-      style={{ backgroundColor: "#0a2e2e" }}
+      style={{ backgroundColor: "#0d1f14" }}
       key={r._id}
       whileHover={{
         y: -8,
@@ -41,7 +41,7 @@ const CourtCard = ({ r }: CourtCardProps) => {
           height={400}
           className="w-full h-52 object-cover object-[50%_20%]"
         />
-        <div className="absolute inset-0 bg-linear-to-t from-[#0a2e2e] to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-t from-[#0d1f14] to-transparent" />
         {/* Floor & Capacity badges overlaid on image */}
         <div className="absolute bottom-3 left-3 flex gap-2">
           {/* <span className="bg-white/10 backdrop-blur-sm text-white text-xs font-medium px-2.5 py-1 rounded-full border border-white/20">Floor {r.floor}</span> */}
@@ -62,7 +62,7 @@ const CourtCard = ({ r }: CourtCardProps) => {
 
         {/* Rate */}
         <div className="flex items-end gap-1">
-          <span className="text-amber-400 text-2xl font-bold">${r.rate}</span>
+          <span className="text-lime-400 text-2xl font-bold">${r.rate}</span>
           <span className="text-white/40 text-sm mb-0.5">/hr</span>
         </div>
 
@@ -81,7 +81,7 @@ const CourtCard = ({ r }: CourtCardProps) => {
         {/* Button */}
         <Link href={`/courts/${r._id}`} className="mt-4 block">
           <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-            <Button className="w-full rounded-lg bg-amber-400 text-[#0d1f3c] font-semibold hover:bg-amber-300 transition-colors flex items-center justify-center gap-2">
+            <Button className="w-full rounded-lg bg-lime-500 text-[#0d1f3c] font-semibold hover:bg-lime-400 transition-colors flex items-center justify-center gap-2">
               View Details
               <FaArrowRightLong />
             </Button>

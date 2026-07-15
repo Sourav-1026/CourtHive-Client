@@ -31,8 +31,6 @@ const CourtDetailsPage = async ({ params }: CourtDetailsPageProps) => {
     headers: await headers(),
   });
 
-  console.log(token);
-
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_SERVER_URL}/courts/${id}`,
     {
@@ -43,8 +41,7 @@ const CourtDetailsPage = async ({ params }: CourtDetailsPageProps) => {
   );
   const court: Court = await res.json();
 
-  const { description, imageUrl, capacity, rate, floor, courtName, amenities } =
-    court;
+  const { description, imageUrl, capacity, courtName, amenities } = court;
 
   return (
     <div className="min-h-screen bg-[#f7f4ef] text-[#1a1714]">
@@ -71,11 +68,9 @@ const CourtDetailsPage = async ({ params }: CourtDetailsPageProps) => {
 
         {/* Hero Text */}
         <div className="absolute bottom-0 left-0 px-8 md:px-16 pb-0">
-          <h1 className="font-display text-blue-950 text-6xl md:text-8xl font-normal leading-[0.92] tracking-tight">
+          <h1 className="font-display text-[#1b3636] text-6xl md:text-8xl font-normal leading-[0.92] tracking-tight">
             {courtName?.split(" ").slice(0, -1).join(" ")}{" "}
-            <em className="text-[#d4a853]">
-              {courtName?.split(" ").slice(-1)}
-            </em>
+            <em className="text-lime-500">{courtName?.split(" ").slice(-1)}</em>
           </h1>
         </div>
       </div>
@@ -87,8 +82,8 @@ const CourtDetailsPage = async ({ params }: CourtDetailsPageProps) => {
           <div>
             {/* Description */}
             <div className="mb-12">
-              <div className="w-12 h-px bg-[#d4a853] mb-6" />
-              <p className="font-body text-[0.65rem] tracking-[0.25em] uppercase text-[#d4a853] mb-4">
+              <div className="w-12 h-px bg-lime-500 mb-6" />
+              <p className="font-body text-[0.65rem] tracking-[0.25em] uppercase text-lime-500 mb-4">
                 About This Court
               </p>
               <p className="font-display text-xl font-normal leading-relaxed text-[#4a4540] max-w-150">
@@ -115,7 +110,7 @@ const CourtDetailsPage = async ({ params }: CourtDetailsPageProps) => {
 
             {/* Amenities — mapped from array */}
             <div>
-              <p className="font-body text-[0.65rem] tracking-[0.25em] uppercase text-[#d4a853] mb-6">
+              <p className="font-body text-[0.65rem] tracking-[0.25em] uppercase text-lime-500 mb-6">
                 Court Amenities
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10">
@@ -124,7 +119,7 @@ const CourtDetailsPage = async ({ params }: CourtDetailsPageProps) => {
                     key={index}
                     className="flex items-center gap-3 py-3 border-b border-black/6"
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#d4a853] shrink-0" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-lime-500 shrink-0" />
                     <span className="font-body text-sm text-[#6b6358]">
                       {amenity}
                     </span>

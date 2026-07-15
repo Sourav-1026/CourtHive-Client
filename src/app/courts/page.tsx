@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import CourtCard from "@/components/CourtCard";
 
 export const metadata: Metadata = {
-  title: "StudyNook | Courts",
+  title: "CourtHive | Courts",
   description: "...",
 };
 
@@ -29,7 +29,6 @@ interface CourtPageProps {
 
 const CourtPage = async ({ searchParams }: CourtPageProps) => {
   const sParams = await searchParams;
-  console.log(sParams);
 
   const params = new URLSearchParams();
   if (sParams.search) params.set("search", String(sParams.search));
@@ -38,11 +37,8 @@ const CourtPage = async ({ searchParams }: CourtPageProps) => {
   if (sParams.maxRate) params.set("maxRate", String(sParams.maxRate));
 
   const fetchUrl = `${process.env.NEXT_PUBLIC_SERVER_URL}/courts?${params.toString()}`;
-  console.log(fetchUrl);
   const res = await fetch(fetchUrl, { cache: "no-store" });
   const courts: Court[] = await res.json();
-
-  // console.log(rooms);
 
   return (
     <div className="container mx-auto my-10">

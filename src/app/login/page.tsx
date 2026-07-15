@@ -30,8 +30,6 @@ const LoginPage: React.FC = () => {
       formData.entries(),
     ) as unknown as LoginFormFields;
 
-    console.log(user);
-
     const { data, error } = await authClient.signIn.email({
       email: user.email,
       password: user.password,
@@ -64,7 +62,7 @@ const LoginPage: React.FC = () => {
           </p>
         </div>
 
-        <div className="bg-[#0a2e2e] rounded-2xl p-6 sm:p-8 border border-white/10">
+        <div className="bg-[#0d1f14] rounded-2xl p-6 sm:p-8 border border-white/10">
           <Form className="flex flex-col gap-5" onSubmit={onSubmit}>
             {/* Email */}
             <TextField
@@ -83,7 +81,7 @@ const LoginPage: React.FC = () => {
               </Label>
               <Input
                 placeholder="john@example.com"
-                className="w-full bg-[#162d4a] border border-[#1e3a5f] rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors"
+                className="w-full bg-[#162d4a] border border-lime-500/50 rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors"
               />
               <FieldError className="text-red-400 text-xs mt-1" />
             </TextField>
@@ -95,7 +93,7 @@ const LoginPage: React.FC = () => {
               </Label>
               <Input
                 placeholder="••••••••"
-                className="w-full bg-[#162d4a] border border-[#1e3a5f] rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors"
+                className="w-full bg-[#162d4a] border border-lime-500/50 rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors"
               />
               <FieldError className="text-red-400 text-xs mt-1" />
             </TextField>
@@ -103,7 +101,7 @@ const LoginPage: React.FC = () => {
             {/* Submit */}
             <Button
               type="submit"
-              className="w-full bg-amber-500 hover:bg-amber-400 text-[#0d1f3c] font-semibold text-sm py-3 rounded-xl transition-colors flex items-center justify-center gap-2 mt-1"
+              className="w-full bg-lime-500 hover:bg-lime-400 text-[#0d1f3c] font-semibold text-sm py-3 rounded-xl transition-colors flex items-center justify-center gap-2 mt-1"
             >
               <BiCheck size={18} />
               Login
@@ -133,7 +131,7 @@ const LoginPage: React.FC = () => {
               Don't have an account?{" "}
               <Link
                 href="/signup"
-                className="text-amber-400 hover:text-amber-300 font-medium transition-colors"
+                className="text-lime-500 hover:text-lime-400 font-medium transition-colors"
               >
                 Register
               </Link>

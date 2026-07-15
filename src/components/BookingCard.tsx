@@ -22,13 +22,12 @@ type BookingCardProps = {
     description: string;
     imageUrl: string;
     amenities: string[];
-  }
-}
+  };
+};
 
 const BookingCard = ({ court }: BookingCardProps) => {
   const { data: session } = authClient.useSession();
   const user = session?.user;
-  // console.log(user);
 
   const { _id, courtName, capacity, rate, imageUrl, amenities } = court;
 
@@ -36,9 +35,6 @@ const BookingCard = ({ court }: BookingCardProps) => {
   const [startHour, setStartHour] = useState<string | null>(null);
   const [endHour, setEndHour] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-
-  //   console.log(new Date(date));
-  //   console.log(startHour, endHour);
 
   const totalCost = useMemo(() => {
     if (!startHour || !endHour) return null;
@@ -68,14 +64,17 @@ const BookingCard = ({ court }: BookingCardProps) => {
 
       const { data: tokenData } = await authClient.token();
 
-      const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/bookings`, {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-          authorization: `Bearer ${tokenData?.token}`,
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_SERVER_URL}/bookings`,
+        {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+            authorization: `Bearer ${tokenData?.token}`,
+          },
+          body: JSON.stringify(bookingData),
         },
-        body: JSON.stringify(bookingData),
-      });
+      );
 
       const data = await res.json();
 
@@ -97,16 +96,22 @@ const BookingCard = ({ court }: BookingCardProps) => {
     <div className="lg:pt-2">
       <div className="sticky top-8 bg-[#1a1714] text-[#f7f4ef] p-8">
         {/* Rate */}
-        <p className="font-body text-[0.6rem] tracking-[0.22em] uppercase text-[#a09880] mb-1">Hourly Rate</p>
+        <p className="font-body text-[0.6rem] tracking-[0.22em] uppercase text-[#a09880] mb-1">
+          Hourly Rate
+        </p>
         <div className="flex items-end gap-1 mb-1">
-          <span className="font-display text-6xl font-normal leading-none text-[#f7f4ef]">${rate}</span>
+          <span className="font-display text-6xl font-normal leading-none text-[#f7f4ef]">
+            ${rate}
+          </span>
         </div>
 
         <div className="w-full h-px bg-white/10 mb-8 mt-4" />
 
         {/* Date */}
         <div className="flex flex-col gap-1 mb-5">
-          <label className="text-[0.6rem] tracking-[0.22em] uppercase text-[#a09880]">Date</label>
+          <label className="text-[0.6rem] tracking-[0.22em] uppercase text-[#a09880]">
+            Date
+          </label>
           <input
             type="date"
             min={new Date().toISOString().split("T")[0]}
@@ -120,7 +125,9 @@ const BookingCard = ({ court }: BookingCardProps) => {
         <div className="grid grid-cols-2 gap-4 mb-5">
           {/* Start Time */}
           <div className="flex flex-col gap-1">
-            <label className="text-[0.6rem] tracking-[0.22em] uppercase text-[#a09880]">Start Time</label>
+            <label className="text-[0.6rem] tracking-[0.22em] uppercase text-[#a09880]">
+              Start Time
+            </label>
             <select
               value={startHour ?? ""}
               onChange={(e) => {
@@ -134,7 +141,11 @@ const BookingCard = ({ court }: BookingCardProps) => {
                 08:00
               </option>
               {TIME_SLOTS.map((slot) => (
-                <option key={slot.value} value={slot.value} className="bg-[#1a1714] text-[#f7f4ef]">
+                <option
+                  key={slot.value}
+                  value={slot.value}
+                  className="bg-[#1a1714] text-[#f7f4ef]"
+                >
                   {slot.label}
                 </option>
               ))}
@@ -143,7 +154,9 @@ const BookingCard = ({ court }: BookingCardProps) => {
 
           {/* End Time */}
           <div className="flex flex-col gap-1">
-            <label className="text-[0.6rem] tracking-[0.22em] uppercase text-[#a09880]">End Time</label>
+            <label className="text-[0.6rem] tracking-[0.22em] uppercase text-[#a09880]">
+              End Time
+            </label>
             <select
               value={endHour ?? ""}
               disabled={!startHour}
@@ -153,8 +166,14 @@ const BookingCard = ({ court }: BookingCardProps) => {
               <option value="" disabled className="bg-[#1a1714]">
                 09:00
               </option>
-              {TIME_SLOTS.filter((s) => Number(s.value) > Number(startHour)).map((slot) => (
-                <option key={slot.value} value={slot.value} className="bg-[#1a1714] text-[#f7f4ef]">
+              {TIME_SLOTS.filter(
+                (s) => Number(s.value) > Number(startHour),
+              ).map((slot) => (
+                <option
+                  key={slot.value}
+                  value={slot.value}
+                  className="bg-[#1a1714] text-[#f7f4ef]"
+                >
                   {slot.label}
                 </option>
               ))}
@@ -165,14 +184,18 @@ const BookingCard = ({ court }: BookingCardProps) => {
         {/* Total Cost */}
         <div className="flex items-end justify-between mb-8">
           <div>
-            <p className="font-body text-[0.6rem] tracking-[0.22em] uppercase text-[#a09880] mb-1">Total Cost</p>
+            <p className="font-body text-[0.6rem] tracking-[0.22em] uppercase text-[#a09880] mb-1">
+              Total Cost
+            </p>
             {startHour && endHour && (
               <p className="font-body text-[0.65rem] text-[#6b6358]">
                 {Number(endHour) - Number(startHour)}h × ${rate}
               </p>
             )}
           </div>
-          <span className="font-display text-5xl font-normal leading-none text-[#f7f4ef] transition-all duration-300">{totalCost !== null ? `$${totalCost}` : "—"}</span>
+          <span className="font-display text-5xl font-normal leading-none text-[#f7f4ef] transition-all duration-300">
+            {totalCost !== null ? `$${totalCost}` : "—"}
+          </span>
         </div>
 
         <div className="w-full h-px bg-white/10 mb-8" />
@@ -184,8 +207,12 @@ const BookingCard = ({ court }: BookingCardProps) => {
             { key: "Capacity", val: `${capacity} People` },
           ].map(({ key, val }) => (
             <div key={key} className="flex justify-between items-center">
-              <span className="font-body text-[0.6rem] tracking-[0.18em] uppercase text-[#6b6358]">{key}</span>
-              <span className="font-display text-base text-[#c8bfb0]">{val}</span>
+              <span className="font-body text-[0.6rem] tracking-[0.18em] uppercase text-[#6b6358]">
+                {key}
+              </span>
+              <span className="font-display text-base text-[#c8bfb0]">
+                {val}
+              </span>
             </div>
           ))}
         </div>
@@ -197,7 +224,7 @@ const BookingCard = ({ court }: BookingCardProps) => {
         <Button
           onClick={handleBooking}
           isDisabled={isLoading}
-          className="font-body block w-full  text-center text-[0.7rem] tracking-[0.28em] uppercase font-medium bg-[#d4a853] text-[#1a1714] hover:bg-[#f7f4ef] hover:tracking-[0.35em] transition-all duration-300"
+          className="font-body block w-full  text-center text-[0.7rem] tracking-[0.28em] uppercase font-medium bg-lime-500 text-[#1a1714] hover:bg-lime-400 hover:tracking-[0.35em] transition-all duration-300"
         >
           Book Now
         </Button>
