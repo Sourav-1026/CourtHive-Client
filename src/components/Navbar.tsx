@@ -65,13 +65,13 @@ const Navbar = () => {
           ) : (
             <>
               <Link href="/login">
-                <Button className="rounded-none bg-transparent text-[#0d1f3c] border border-[#0d1f3c]">
+                <Button className="rounded-none bg-transparent text-amber-400 border border-amber-400 hover:bg-amber-300 hover:text-white">
                   Login
                   <MdLogin />
                 </Button>
               </Link>
               <Link href="/signup">
-                <Button className="rounded-none bg-[#0d1f3c] text-white">
+                <Button className="rounded-none bg-amber-300 text-black">
                   Register
                   <MdLogin />
                 </Button>

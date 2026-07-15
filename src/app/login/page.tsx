@@ -1,6 +1,13 @@
 "use client";
 import React from "react";
-import { Button, FieldError, Form, Input, Label, TextField } from "@heroui/react";
+import {
+  Button,
+  FieldError,
+  Form,
+  Input,
+  Label,
+  TextField,
+} from "@heroui/react";
 import { BiCheck } from "react-icons/bi";
 import Link from "next/link";
 import { toast } from "react-toastify";
@@ -14,10 +21,14 @@ interface LoginFormFields {
 }
 
 const LoginPage: React.FC = () => {
-  const onSubmit = async (e: React.SyntheticEvent<HTMLFormElement>): Promise<void> => {
+  const onSubmit = async (
+    e: React.SyntheticEvent<HTMLFormElement>,
+  ): Promise<void> => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    const user = Object.fromEntries(formData.entries()) as unknown as LoginFormFields;
+    const user = Object.fromEntries(
+      formData.entries(),
+    ) as unknown as LoginFormFields;
 
     console.log(user);
 
@@ -45,11 +56,15 @@ const LoginPage: React.FC = () => {
       <div className="w-full max-w-md">
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Welcome back</h1>
-          <p className="text-gray-500 text-sm mt-2">Login to your CourtHive account.</p>
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">
+            Welcome back
+          </h1>
+          <p className="text-gray-500 text-sm mt-2">
+            Login to your CourtHive account.
+          </p>
         </div>
 
-        <div className="bg-[#0d1f3c] rounded-2xl p-6 sm:p-8 border border-white/10">
+        <div className="bg-[#0a2e2e] rounded-2xl p-6 sm:p-8 border border-white/10">
           <Form className="flex flex-col gap-5" onSubmit={onSubmit}>
             {/* Email */}
             <TextField
@@ -63,7 +78,9 @@ const LoginPage: React.FC = () => {
                 return null;
               }}
             >
-              <Label className="text-slate-400 text-xs tracking-widest uppercase mb-1.5 block">Email</Label>
+              <Label className="text-slate-400 text-xs tracking-widest uppercase mb-1.5 block">
+                Email
+              </Label>
               <Input
                 placeholder="john@example.com"
                 className="w-full bg-[#162d4a] border border-[#1e3a5f] rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors"
@@ -73,7 +90,9 @@ const LoginPage: React.FC = () => {
 
             {/* Password */}
             <TextField isRequired minLength={6} name="password" type="password">
-              <Label className="text-slate-400 text-xs tracking-widest uppercase mb-1.5 block">Password</Label>
+              <Label className="text-slate-400 text-xs tracking-widest uppercase mb-1.5 block">
+                Password
+              </Label>
               <Input
                 placeholder="••••••••"
                 className="w-full bg-[#162d4a] border border-[#1e3a5f] rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors"
@@ -82,7 +101,10 @@ const LoginPage: React.FC = () => {
             </TextField>
 
             {/* Submit */}
-            <Button type="submit" className="w-full bg-amber-500 hover:bg-amber-400 text-[#0d1f3c] font-semibold text-sm py-3 rounded-xl transition-colors flex items-center justify-center gap-2 mt-1">
+            <Button
+              type="submit"
+              className="w-full bg-amber-500 hover:bg-amber-400 text-[#0d1f3c] font-semibold text-sm py-3 rounded-xl transition-colors flex items-center justify-center gap-2 mt-1"
+            >
               <BiCheck size={18} />
               Login
             </Button>
@@ -109,7 +131,10 @@ const LoginPage: React.FC = () => {
           <div className="mt-6 pt-5 border-t border-white/10 text-center">
             <p className="text-slate-400 text-sm">
               Don't have an account?{" "}
-              <Link href="/signup" className="text-amber-400 hover:text-amber-300 font-medium transition-colors">
+              <Link
+                href="/signup"
+                className="text-amber-400 hover:text-amber-300 font-medium transition-colors"
+              >
                 Register
               </Link>
             </p>

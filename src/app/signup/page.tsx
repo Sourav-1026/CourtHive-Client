@@ -1,6 +1,14 @@
 "use client";
 import React from "react";
-import { Button, Description, FieldError, Form, Input, Label, TextField } from "@heroui/react";
+import {
+  Button,
+  Description,
+  FieldError,
+  Form,
+  Input,
+  Label,
+  TextField,
+} from "@heroui/react";
 import { BiCheck } from "react-icons/bi";
 import Link from "next/link";
 import { toast } from "react-toastify";
@@ -16,10 +24,14 @@ interface SignUpFormFields {
 }
 
 const SignUpPage: React.FC = () => {
-  const onSubmit = async (e: React.SyntheticEvent<HTMLFormElement>): Promise<void> => {
+  const onSubmit = async (
+    e: React.SyntheticEvent<HTMLFormElement>,
+  ): Promise<void> => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    const user = Object.fromEntries(formData.entries()) as unknown as SignUpFormFields;
+    const user = Object.fromEntries(
+      formData.entries(),
+    ) as unknown as SignUpFormFields;
 
     const { data, error } = await authClient.signUp.email({
       email: user.email,
@@ -50,18 +62,24 @@ const SignUpPage: React.FC = () => {
       <div className="w-full max-w-md">
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Create your account</h1>
-          <p className="text-gray-500 text-sm mt-2">Join CourtHive and start booking courts today.</p>
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">
+            Create your account
+          </h1>
+          <p className="text-gray-500 text-sm mt-2">
+            Join CourtHive and start booking courts today.
+          </p>
         </div>
 
-        <div className="bg-[#0d1f3c] rounded-2xl  mx-auto  p-6 sm:p-8 border border-white/10">
+        <div className="bg-[#0a2e2e] rounded-2xl  mx-auto  p-6 sm:p-8 border border-white/10">
           <Form className="flex flex-col gap-5" onSubmit={onSubmit}>
             {/* Name */}
             <TextField isRequired name="name" type="text">
-              <Label className="text-slate-400 text-xs tracking-widest uppercase mb-1.5 block">Full Name</Label>
+              <Label className="text-slate-400 text-xs tracking-widest uppercase mb-1.5 block">
+                Full Name
+              </Label>
               <Input
                 placeholder="John Doe"
-                className="w-full bg-[#162d4a] border border-[#1e3a5f] rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors"
+                className="w-full bg-[#1b3636] border border-[#182c2c] rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors"
               />
               <FieldError className="text-red-400 text-xs mt-1" />
             </TextField>
@@ -78,20 +96,24 @@ const SignUpPage: React.FC = () => {
                 return null;
               }}
             >
-              <Label className="text-slate-400 text-xs tracking-widest uppercase mb-1.5 block">Email</Label>
+              <Label className="text-slate-400 text-xs tracking-widest uppercase mb-1.5 block">
+                Email
+              </Label>
               <Input
                 placeholder="john@example.com"
-                className="w-full bg-[#162d4a] border border-[#1e3a5f] rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors"
+                className="w-full bg-[#1b3636] border border-[#182c2c] rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors"
               />
               <FieldError className="text-red-400 text-xs mt-1" />
             </TextField>
 
             {/* Image URL */}
-            <TextField isRequired name="image" type="url">
-              <Label className="text-slate-400 text-xs tracking-widest uppercase mb-1.5 block">Profile Image URL</Label>
+            <TextField name="image" type="url">
+              <Label className="text-slate-400 text-xs tracking-widest uppercase mb-1.5 block">
+                Profile Image URL
+              </Label>
               <Input
                 placeholder="https://example.com/avatar.jpg"
-                className="w-full bg-[#162d4a] border border-[#1e3a5f] rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors"
+                className="w-full bg-[#1b3636] border border-[#182c2c] rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors"
               />
               <FieldError className="text-red-400 text-xs mt-1" />
             </TextField>
@@ -103,23 +125,33 @@ const SignUpPage: React.FC = () => {
               name="password"
               type="password"
               validate={(value: string) => {
-                if (value.length < 6) return "Password must be at least 6 characters";
-                if (!/[A-Z]/.test(value)) return "Must contain at least one uppercase letter";
-                if (!/[0-9]/.test(value)) return "Must contain at least one number";
+                if (value.length < 6)
+                  return "Password must be at least 6 characters";
+                if (!/[A-Z]/.test(value))
+                  return "Must contain at least one uppercase letter";
+                if (!/[0-9]/.test(value))
+                  return "Must contain at least one number";
                 return null;
               }}
             >
-              <Label className="text-slate-400 text-xs tracking-widest uppercase mb-1.5 block">Password</Label>
+              <Label className="text-slate-400 text-xs tracking-widest uppercase mb-1.5 block">
+                Password
+              </Label>
               <Input
                 placeholder="••••••••"
-                className="w-full bg-[#162d4a] border border-[#1e3a5f] rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors"
+                className="w-full bg-[#1b3636] border border-[#182c2c] rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors"
               />
-              <Description className="text-slate-500 text-xs mt-1">At least 6 characters, 1 uppercase letter and 1 number.</Description>
+              <Description className="text-slate-500 text-xs mt-1">
+                At least 6 characters, 1 uppercase letter and 1 number.
+              </Description>
               <FieldError className="text-red-400 text-xs mt-1" />
             </TextField>
 
             {/* Submit */}
-            <Button type="submit" className="w-full bg-amber-500 hover:bg-amber-400 text-[#0d1f3c] font-semibold text-sm py-3 rounded-xl transition-colors flex items-center justify-center gap-2 mt-1">
+            <Button
+              type="submit"
+              className="w-full bg-amber-500 hover:bg-amber-400 text-[#0d1f3c] font-semibold text-sm py-3 rounded-xl transition-colors flex items-center justify-center gap-2 mt-1"
+            >
               <BiCheck size={18} />
               Create Account
             </Button>
@@ -146,7 +178,10 @@ const SignUpPage: React.FC = () => {
           <div className="mt-6 pt-5 border-t border-white/10 text-center">
             <p className="text-slate-400 text-sm">
               Already have an account?{" "}
-              <Link href="/login" className="text-amber-400 hover:text-amber-300 font-medium transition-colors">
+              <Link
+                href="/login"
+                className="text-amber-400 hover:text-amber-300 font-medium transition-colors"
+              >
                 Login
               </Link>
             </p>

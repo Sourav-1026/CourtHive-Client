@@ -58,13 +58,13 @@ const MyBookingsPage = async () => {
           <div className="bg-[#0a2e2e] p-6 rounded-full">
             <BsCalendarX className="text-amber-400 text-5xl" />
           </div>
-          <h2 className="text-2xl font-bold text-[#0d1f3c]">No Bookings Yet</h2>
+          <h2 className="text-2xl font-bold text-[#0a2e2e]">No Bookings Yet</h2>
           <p className="text-gray-500 text-sm">
             You haven't made any court bookings. Start by exploring available
             courts.
           </p>
           <Link href="/courts">
-            <Button className="bg-[#0d1f3c] text-white hover:bg-amber-400 hover:text-[#0d1f3c] font-semibold px-6 rounded-lg transition-colors">
+            <Button className="bg-[#0a2e2e] text-white hover:bg-amber-400 hover:text-[#0d1f3c] font-semibold px-6 rounded-lg transition-colors">
               Browse Courts
             </Button>
           </Link>
