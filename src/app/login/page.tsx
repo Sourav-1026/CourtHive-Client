@@ -81,7 +81,7 @@ const LoginPage: React.FC = () => {
               </Label>
               <Input
                 placeholder="john@example.com"
-                className="w-full bg-[#162d4a] border border-lime-500/50 rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors"
+                className="w-full bg-[#1b3636] border border-lime-500/50 rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors"
               />
               <FieldError className="text-red-400 text-xs mt-1" />
             </TextField>
@@ -93,7 +93,7 @@ const LoginPage: React.FC = () => {
               </Label>
               <Input
                 placeholder="••••••••"
-                className="w-full bg-[#162d4a] border border-lime-500/50 rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors"
+                className="w-full bg-[#1b3636] border border-lime-500/50 rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-colors"
               />
               <FieldError className="text-red-400 text-xs mt-1" />
             </TextField>

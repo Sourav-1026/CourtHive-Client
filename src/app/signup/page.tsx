@@ -70,7 +70,7 @@ const SignUpPage: React.FC = () => {
           </p>
         </div>
 
-        <div className="bg-[#0a2e2e] rounded-2xl  mx-auto  p-6 sm:p-8 border border-white/10">
+        <div className="bg-[#0d1f14] rounded-2xl  mx-auto  p-6 sm:p-8 border border-white/10">
           <Form className="flex flex-col gap-5" onSubmit={onSubmit}>
             {/* Name */}
             <TextField isRequired name="name" type="text">
